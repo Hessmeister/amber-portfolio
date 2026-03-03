@@ -2,11 +2,11 @@
    Custom Properties
    ============================ */
 :root {
-  --bg:           #f2e8e6;
+  --bg:           #e6e8e7;
   --bg-dark:      #0a0a0a;
   --text:         #0a0a0a;
-  --text-muted:   #666666;
-  --text-dim:     #999999;
+  --text-muted:   #1a1a1a;
+  --text-dim:     #555555;
   --border:       #dedcda;
   --accent:       #b8803a;
   --serif:        'Cormorant Garamond', Georgia, serif;
@@ -32,7 +32,7 @@ html {
 
 body {
   font-family: var(--serif);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 17px;
   line-height: 1.7;
   color: var(--text);
@@ -70,7 +70,7 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(242, 232, 230, 0.92);
+  background: rgba(230, 232, 231, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -562,21 +562,39 @@ nav.scrolled {
   margin-top: 0.875rem;
 }
 
-.project-title-row {
+.project-header-row {
   display: flex;
-  align-items: baseline;
-  gap: 0.875rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.project-type {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.project-year {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
 }
 
 .project-name {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0;
   color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
   transition: color 0.3s;
 }
 
@@ -584,17 +602,22 @@ nav.scrolled {
   color: var(--accent);
 }
 
-.project-type {
-  font-size: 0.72rem;
-  font-weight: 300;
+.project-credits {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 400;
   color: var(--text-dim);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
-.project-credits {
-  font-size: 0.72rem;
-  font-weight: 300;
+.project-extra {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 400;
   color: var(--text-dim);
+  letter-spacing: 0.03em;
+  display: block;
+  margin-top: 0.1rem;
 }
 
 /* ============================
@@ -811,7 +834,7 @@ nav.scrolled {
   .nav-links {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(242, 232, 230, 0.97);
+    background: rgba(230, 232, 231, 0.97);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
