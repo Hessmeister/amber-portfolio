@@ -144,21 +144,6 @@
         "Music & Sound": "Massive Music",
         "Post Production": "The Ambassadors"
       }
-    },
-    {
-      "title": "Over Grenzen",
-      "category": "documentary",
-      "type": "Documentary Series",
-      "year": "2023",
-      "youtube_id": "ArZE6e1M-Rc",
-      "thumbnail": "assets/images/thumbnails/over-grenzen.jpg",
-      "credits": {
-        "Directors": "Joost van der Valk, Anna van 't Hek, Sakir Khader, Duco Coops, Minna Sedmakov, Joey Boink",
-        "Production": "Villain Studios",
-        "Executive Producers": "Stefan Tieleman, Jelmar Hagen, Thijs Schreuder",
-        "DOPs": "Tim Kerbosch, Lennard Brans, Sam Vis, Jarl Piepers, Dirk-Jan Kerkkamp",
-        "Music": "Daan Temmink"
-      }
     }
   ]
 }
