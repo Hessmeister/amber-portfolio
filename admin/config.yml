@@ -6,11 +6,13 @@ media_folder: assets/images
 public_folder: assets/images
 
 collections:
+
+  # ── Selected Work (homepage grid) ──────────────────────────────────────────
   - name: projects
-    label: Projects
+    label: Selected Work
     files:
       - name: projects
-        label: Projects
+        label: Selected Work
         file: data/projects.json
         fields:
           - label: Projects
@@ -23,18 +25,48 @@ collections:
                 name: category
                 widget: select
                 options:
-                  - { label: Commercial, value: commercial }
-                  - { label: Film, value: film }
+                  - { label: Commercial,  value: commercial }
+                  - { label: Film,        value: film }
                   - { label: Music Video, value: music-video }
                   - { label: Documentary, value: documentary }
-                  - { label: Short Film, value: short-film }
-              - { label: "Type Label", name: type, widget: string, hint: "Displayed label, e.g. 'Fashion Film'" }
+              - { label: "Type Label", name: type, widget: string,
+                  hint: "Label shown on card — e.g. 'Short Film', 'Fashion Film', 'Commercial'" }
               - { label: Year, name: year, widget: string }
-              - { label: Director, name: director, widget: string }
-              - { label: "Extra Info", name: extra, widget: string, required: false, hint: "Optional second line, e.g. 'Amazon Prime Video'" }
-              - { label: Thumbnail, name: thumbnail, widget: image }
-              - { label: "Vimeo URL", name: vimeo_url, widget: string, required: false, hint: "e.g. https://vimeo.com/123456789" }
+              - label: Thumbnail
+                name: thumbnail
+                widget: image
+                media_folder: /assets/images/thumbnails
+                public_folder: assets/images/thumbnails
+              - { label: "Vimeo ID",   name: vimeo_id,   widget: string, required: false,
+                  hint: "Numbers only — e.g. 1073861924" }
+              - { label: "YouTube ID", name: youtube_id, widget: string, required: false,
+                  hint: "The part after watch?v= — e.g. ArZE6e1M-Rc" }
+              - label: Credits
+                name: credits
+                widget: object
+                fields:
+                  - { label: Director,             name: Director,           widget: string, required: false }
+                  - { label: Directors,             name: Directors,          widget: string, required: false }
+                  - { label: Production,            name: Production,         widget: string, required: false }
+                  - { label: Agency,                name: Agency,             widget: string, required: false }
+                  - { label: DOP,                   name: DOP,                widget: string, required: false }
+                  - { label: Producer,              name: Producer,           widget: string, required: false }
+                  - { label: VFX,                   name: VFX,                widget: string, required: false }
+                  - { label: Grade,                 name: Grade,              widget: string, required: false }
+                  - { label: "Colour Grade",        name: "Colour Grade",     widget: string, required: false }
+                  - { label: Colourist,             name: Colourist,          widget: string, required: false }
+                  - { label: Music,                 name: Music,              widget: string, required: false }
+                  - { label: "Music & Sound",       name: "Music & Sound",    widget: string, required: false }
+                  - { label: "Sound Design",        name: "Sound Design",     widget: string, required: false }
+                  - { label: Sound,                 name: Sound,              widget: string, required: false }
+                  - { label: "Written by",          name: "Written by",       widget: string, required: false }
+                  - { label: "Additional Editing",  name: "Additional Editing", widget: string, required: false }
+                  - { label: "Art Direction",       name: "Art Direction",    widget: string, required: false }
+                  - { label: "Grade & VFX",         name: "Grade & VFX",      widget: string, required: false }
+                  - { label: "Online & Finishing",  name: "Online & Finishing", widget: string, required: false }
+                  - { label: "Post Production",     name: "Post Production",  widget: string, required: false }
 
+  # ── About & Contact ────────────────────────────────────────────────────────
   - name: about
     label: About & Contact
     files:
@@ -59,7 +91,9 @@ collections:
             name: contact
             widget: object
             fields:
-              - { label: Email, name: email, widget: string }
-              - { label: "Phone (display)", name: phone, widget: string }
-              - { label: "Phone (href, digits only)", name: phone_href, widget: string }
-              - { label: Location, name: location, widget: string }
+              - { label: Email,                    name: email,      widget: string }
+              - { label: "Phone (display)",        name: phone,      widget: string,
+                  hint: "e.g. +31 (0)6 4142 9175" }
+              - { label: "Phone (digits only)",    name: phone_href, widget: string,
+                  hint: "e.g. +31641429175" }
+              - { label: Location,                 name: location,   widget: string }
