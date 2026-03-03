@@ -610,17 +610,13 @@ nav.scrolled {
   margin: 0 auto;
 }
 
-.about-image-placeholder {
+.about-photo {
+  width: 100%;
   aspect-ratio: 3/4;
-  background: #e8e6e2;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dim);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  display: block;
 }
 
 .about-content {
@@ -893,7 +889,7 @@ nav.scrolled {
   .filter-bar { padding: 0 1.5rem; margin-bottom: 2rem; }
   .section-header { padding: 0 1.5rem; flex-direction: column; gap: 0.4rem; }
   .about-container { grid-template-columns: 1fr; padding: 0 1.5rem; gap: 2rem; }
-  .about-image-placeholder { aspect-ratio: 4/3; max-height: 320px; }
+  .about-photo { aspect-ratio: 4/3; max-height: 320px; }
   .contact-container { grid-template-columns: 1fr; padding: 0 1.5rem; gap: 2.5rem; }
   .contact { padding: 4rem 0; }
   .footer { padding: 1.5rem; }
