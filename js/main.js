@@ -74,4 +74,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* --- Project filter --- */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+  const archive = document.getElementById('projectArchive');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const filter = btn.dataset.filter;
+
+      if (filter === 'all') {
+        projectItems.forEach(item => { item.style.display = ''; });
+        archive.classList.remove('is-filtered');
+      } else {
+        projectItems.forEach(item => {
+          item.style.display = item.dataset.category === filter ? '' : 'none';
+        });
+        archive.classList.add('is-filtered');
+      }
+    });
+  });
+
 });

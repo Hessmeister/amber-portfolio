@@ -7,7 +7,7 @@
   <meta name="description" content="Amber Hooijmans is a video editor and post-production specialist based in Amsterdam. Commercials, documentaries, music videos, and short films.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -27,15 +27,16 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-glow"></div>
   <div class="hero-content">
     <h1 class="hero-name" id="heroName">
       <span class="hero-line">Amber</span>
       <span class="hero-line">Hooijmans</span>
     </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-title">Video Editor</p>
-    <p class="hero-location">Amsterdam, NL</p>
+    <div class="hero-meta">
+      <span class="hero-title">Video Editor</span>
+      <span class="hero-sep"></span>
+      <span class="hero-location">Amsterdam, NL</span>
+    </div>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -88,169 +89,216 @@
     <h2>Selected Work</h2>
   </div>
 
-  <div class="project-grid">
+  <!-- Filter bar -->
+  <div class="filter-bar reveal">
+    <button class="filter-btn is-active" data-filter="all">All<sup>9</sup></button>
+    <button class="filter-btn" data-filter="commercial">Commercial<sup>4</sup></button>
+    <button class="filter-btn" data-filter="film">Film<sup>2</sup></button>
+    <button class="filter-btn" data-filter="music-video">Music Video<sup>1</sup></button>
+    <button class="filter-btn" data-filter="documentary">Documentary<sup>1</sup></button>
+    <button class="filter-btn" data-filter="short-film">Short Film<sup>1</sup></button>
+  </div>
 
-    <!-- Featured: Over Grenzen -->
-    <a href="#" class="project-card project-card--featured reveal" data-project="over-grenzen">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/over-grenzen.jpg" alt="Over Grenzen">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+  <!-- Archive grid -->
+  <div class="project-archive" id="projectArchive">
+
+    <!-- Over Grenzen -->
+    <div class="project-item reveal" data-category="documentary">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/over-grenzen.jpg" alt="Over Grenzen">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Documentary Series — Amazon Prime</span>
-        <h3 class="project-name">Over Grenzen</h3>
-        <span class="project-credits">Multiple Directors</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">Over Grenzen</h3>
+            <span class="project-type">Documentary Series — Amazon Prime</span>
+          </div>
+          <span class="project-credits">Multiple Directors</span>
+        </div>
+      </a>
+    </div>
 
     <!-- Peggy -->
-    <a href="#" class="project-card reveal" data-project="peggy">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/peggy.jpg" alt="Peggy">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="short-film">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/peggy.jpg" alt="Peggy">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Short Film</span>
-        <h3 class="project-name">Peggy</h3>
-        <span class="project-credits">Dir. Andreas Pasvantis</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">Peggy</h3>
+            <span class="project-type">Short Film</span>
+          </div>
+          <span class="project-credits">Dir. Andreas Pasvantis</span>
+        </div>
+      </a>
+    </div>
 
     <!-- KWF -->
-    <a href="#" class="project-card reveal" data-project="kwf">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/kwf.jpg" alt="KWF">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="commercial">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/kwf.jpg" alt="KWF">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Commercial</span>
-        <h3 class="project-name">KWF</h3>
-        <span class="project-credits">Dir. Jacobine van Hellemond</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">KWF</h3>
+            <span class="project-type">Commercial</span>
+          </div>
+          <span class="project-credits">Dir. Jacobine van Hellemond</span>
+        </div>
+      </a>
+    </div>
 
     <!-- The Bird -->
-    <a href="#" class="project-card reveal" data-project="the-bird">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/the-bird.jpg" alt="The Bird — Sing Me A Song">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="music-video">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/the-bird.jpg" alt="The Bird — Sing Me A Song">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Music Video</span>
-        <h3 class="project-name">The Bird — Sing Me A Song</h3>
-        <span class="project-credits">Dir. Ruben van Leer</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">The Bird — Sing Me A Song</h3>
+            <span class="project-type">Music Video</span>
+          </div>
+          <span class="project-credits">Dir. Ruben van Leer</span>
+        </div>
+      </a>
+    </div>
 
     <!-- DGTL -->
-    <a href="#" class="project-card reveal" data-project="dgtl">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/dgtl.jpg" alt="DGTL">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="film">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/dgtl.jpg" alt="DGTL">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Festival Film</span>
-        <h3 class="project-name">DGTL</h3>
-        <span class="project-credits">Dir. Aaron van Valen</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">DGTL</h3>
+            <span class="project-type">Festival Film</span>
+          </div>
+          <span class="project-credits">Dir. Aaron van Valen</span>
+        </div>
+      </a>
+    </div>
 
     <!-- Scotch & Soda -->
-    <a href="#" class="project-card reveal" data-project="scotch-soda">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/scotch-soda.jpg" alt="Scotch &amp; Soda">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="film">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/scotch-soda.jpg" alt="Scotch &amp; Soda">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Fashion Film</span>
-        <h3 class="project-name">Scotch & Soda</h3>
-        <span class="project-credits">Dir. Fleur Fortun&eacute;</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">Scotch &amp; Soda</h3>
+            <span class="project-type">Fashion Film</span>
+          </div>
+          <span class="project-credits">Dir. Fleur Fortun&eacute;</span>
+        </div>
+      </a>
+    </div>
 
     <!-- KPN -->
-    <a href="#" class="project-card reveal" data-project="kpn">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/kpn.jpg" alt="KPN">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="commercial">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/kpn.jpg" alt="KPN">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Commercial</span>
-        <h3 class="project-name">KPN</h3>
-        <span class="project-credits">Dir. Jacobine van Hellemond</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">KPN</h3>
+            <span class="project-type">Commercial</span>
+          </div>
+          <span class="project-credits">Dir. Jacobine van Hellemond</span>
+        </div>
+      </a>
+    </div>
 
     <!-- Menzis -->
-    <a href="#" class="project-card reveal" data-project="menzis">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/menzis.jpg" alt="Menzis">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="commercial">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/menzis.jpg" alt="Menzis">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Commercial</span>
-        <h3 class="project-name">Menzis</h3>
-        <span class="project-credits">Dir. Ralf Demesmaeker</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">Menzis</h3>
+            <span class="project-type">Commercial</span>
+          </div>
+          <span class="project-credits">Dir. Ralf Demesmaeker</span>
+        </div>
+      </a>
+    </div>
 
     <!-- Lapierre -->
-    <a href="#" class="project-card reveal" data-project="lapierre">
-      <div class="project-thumb">
-        <img class="thumb-img" src="assets/images/lapierre.jpg" alt="Lapierre">
-        <div class="project-overlay">
-          <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-          </svg>
+    <div class="project-item reveal" data-category="commercial">
+      <a href="#" class="project-link">
+        <div class="project-thumb">
+          <img class="thumb-img" src="assets/images/lapierre.jpg" alt="Lapierre">
+          <div class="project-overlay">
+            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      <div class="project-info">
-        <span class="project-type">Commercial</span>
-        <h3 class="project-name">Lapierre</h3>
-        <span class="project-credits">Dir. Ruben van Leer</span>
-      </div>
-    </a>
+        <div class="project-meta">
+          <div class="project-title-row">
+            <h3 class="project-name">Lapierre</h3>
+            <span class="project-type">Commercial</span>
+          </div>
+          <span class="project-credits">Dir. Ruben van Leer</span>
+        </div>
+      </a>
+    </div>
 
   </div>
 </section>
