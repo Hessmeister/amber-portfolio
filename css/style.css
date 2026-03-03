@@ -2,7 +2,7 @@
    Custom Properties
    ============================ */
 :root {
-  --bg:           #f1e1d4;
+  --bg:           #f6ebe3;
   --bg-dark:      #0a0a0a;
   --text:         #0a0a0a;
   --text-muted:   #1a1a1a;
@@ -70,7 +70,7 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(241, 225, 212, 0.92);
+  background: rgba(246, 235, 227, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -485,8 +485,8 @@ nav.scrolled {
 }
 
 /* Default (all) — staggered positions */
-.project-archive .project-item:nth-child(1) { grid-column: 1 / 8;  padding-bottom: 7rem; }
-.project-archive .project-item:nth-child(2) { grid-column: 8 / 13; padding-top: 10rem; padding-bottom: 7rem; }
+.project-archive .project-item:nth-child(1) { grid-column: 1 / 7;  padding-bottom: 7rem; }
+.project-archive .project-item:nth-child(2) { grid-column: 8 / 13; padding-top: 14rem; padding-bottom: 7rem; }
 .project-archive .project-item:nth-child(3) { grid-column: 2 / 7;  padding-bottom: 7rem; }
 .project-archive .project-item:nth-child(4) { grid-column: 6 / 12; padding-top: 5rem;  padding-bottom: 7rem; }
 .project-archive .project-item:nth-child(5) { grid-column: 1 / 6;  padding-bottom: 7rem; }
@@ -834,7 +834,7 @@ nav.scrolled {
   .nav-links {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(241, 225, 212, 0.97);
+    background: rgba(246, 235, 227, 0.97);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
@@ -869,8 +869,8 @@ nav.scrolled {
     padding: 0 2rem;
   }
 
-  .project-archive .project-item:nth-child(1) { grid-column: 1 / 6; }
-  .project-archive .project-item:nth-child(2) { grid-column: 5 / 9; padding-top: 8rem; }
+  .project-archive .project-item:nth-child(1) { grid-column: 1 / 5; }
+  .project-archive .project-item:nth-child(2) { grid-column: 6 / 9; padding-top: 10rem; }
   .project-archive .project-item:nth-child(3) { grid-column: 1 / 5; }
   .project-archive .project-item:nth-child(4) { grid-column: 4 / 9; padding-top: 4rem; }
   .project-archive .project-item:nth-child(5) { grid-column: 1 / 5; }
