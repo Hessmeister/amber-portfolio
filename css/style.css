@@ -607,27 +607,37 @@ nav.scrolled {
   color: var(--accent);
 }
 
+/* Credits — primary + extra sit side by side */
+.project-credits-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 /* Primary credits — always visible */
 .project-primary-credits {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
-/* Extra credits — revealed on hover */
+/* Extra credits — slide in as second column on hover */
 .project-extra-credits {
-  max-height: 0;
   overflow: hidden;
+  max-width: 0;
   opacity: 0;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  transition: max-height 0.4s var(--ease), opacity 0.35s ease;
+  padding-left: 0;
+  transition: max-width 0.45s var(--ease), opacity 0.35s ease, padding-left 0.45s var(--ease);
 }
 
 .project-item:hover .project-extra-credits {
-  max-height: 200px;
+  max-width: 260px;
   opacity: 1;
+  padding-left: 1.25rem;
 }
 
 .credit-line {

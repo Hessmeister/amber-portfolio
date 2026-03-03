@@ -51,8 +51,10 @@ function renderProjectCard(project) {
           <span class="project-year">${project.year}</span>
         </div>
         <h3 class="project-name">${project.title}</h3>
-        <div class="project-primary-credits">${primary.join('')}</div>
-        ${extra.length ? `<div class="project-extra-credits">${extra.join('')}</div>` : ''}
+        <div class="project-credits-wrap">
+          <div class="project-primary-credits">${primary.join('')}</div>
+          ${extra.length ? `<div class="project-extra-credits">${extra.join('')}</div>` : ''}
+        </div>
       </div>
     </a>`;
   return el;
