@@ -215,8 +215,24 @@ function initMobileMenu() {
   }));
 }
 
+/* ---- Hero letter animation ---- */
+function initHeroAnimation() {
+  document.querySelectorAll('.hero-line').forEach((line, lineIndex) => {
+    const text = line.textContent;
+    line.textContent = '';
+    [...text].forEach((char, i) => {
+      const span = document.createElement('span');
+      span.className = 'letter';
+      span.textContent = char === ' ' ? '\u00A0' : char;
+      span.style.animationDelay = `${lineIndex * 0.3 + i * 0.05 + 0.3}s`;
+      line.appendChild(span);
+    });
+  });
+}
+
 /* ---- Boot ---- */
 document.addEventListener('DOMContentLoaded', async () => {
+  initHeroAnimation();
   initNav();
   initMobileMenu();
 

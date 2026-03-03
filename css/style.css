@@ -1076,38 +1076,32 @@ nav.scrolled {
 }
 
 /* Header */
-.arc-header {
-  padding: 8rem 2.5rem 3rem;
-  max-width: 1440px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--border);
+.arc-hero {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 2.5rem 3rem;
 }
 
-.arc-header-inner .section-num {
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-dim);
+.arc-hero-content {
+  position: relative;
+}
+
+.arc-hero-title {
   display: block;
-  margin-bottom: 0.75rem;
-}
-
-.arc-title-main {
-  font-family: var(--sans);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .arc-subtitle {
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fade-up 0.6s var(--ease) 1.5s forwards;
 }
 
 /* Filters */
@@ -1359,7 +1353,7 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
-  .arc-header { padding: 7rem 1.5rem 2rem; }
+  .arc-hero { padding: 0 1.5rem 2.5rem; min-height: 45vh; }
   .arc-filters { padding: 1.5rem 1.5rem 1rem; top: 55px; }
   .arc-filter-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .arc-search-wrap { min-width: 100%; }
@@ -1367,6 +1361,6 @@ nav.scrolled {
 }
 
 @media (max-width: 480px) {
-  .arc-title-main { font-size: 2.5rem; }
+  .arc-hero { min-height: 40vh; }
   .year-btn { font-size: 0.58rem; padding: 0.15rem 0.55rem; }
 }
