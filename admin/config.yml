@@ -1,0 +1,65 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: assets/images
+public_folder: assets/images
+
+collections:
+  - name: projects
+    label: Projects
+    files:
+      - name: projects
+        label: Projects
+        file: data/projects.json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            summary: "{{fields.title}} — {{fields.type}} ({{fields.year}})"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Category
+                name: category
+                widget: select
+                options:
+                  - { label: Commercial, value: commercial }
+                  - { label: Film, value: film }
+                  - { label: Music Video, value: music-video }
+                  - { label: Documentary, value: documentary }
+                  - { label: Short Film, value: short-film }
+              - { label: "Type Label", name: type, widget: string, hint: "Displayed label, e.g. 'Fashion Film'" }
+              - { label: Year, name: year, widget: string }
+              - { label: Director, name: director, widget: string }
+              - { label: "Extra Info", name: extra, widget: string, required: false, hint: "Optional second line, e.g. 'Amazon Prime Video'" }
+              - { label: Thumbnail, name: thumbnail, widget: image }
+              - { label: "Vimeo URL", name: vimeo_url, widget: string, required: false, hint: "e.g. https://vimeo.com/123456789" }
+
+  - name: about
+    label: About & Contact
+    files:
+      - name: about
+        label: About & Contact
+        file: data/about.json
+        fields:
+          - { label: "Lead Paragraph", name: bio_lead, widget: text }
+          - label: "Bio Paragraphs"
+            name: bio_body
+            widget: list
+            field: { label: Paragraph, name: paragraph, widget: text }
+          - label: Tools
+            name: tools
+            widget: list
+            field: { label: Tool, name: tool, widget: string }
+          - label: Specialties
+            name: specialties
+            widget: list
+            field: { label: Specialty, name: specialty, widget: string }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Email, name: email, widget: string }
+              - { label: "Phone (display)", name: phone, widget: string }
+              - { label: "Phone (href, digits only)", name: phone_href, widget: string }
+              - { label: Location, name: location, widget: string }

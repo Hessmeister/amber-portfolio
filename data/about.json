@@ -1,0 +1,16 @@
+{
+  "bio_lead": "Born in The Hague \u2014 the one by the sea that isn\u2019t the capital \u2014 now based in Amsterdam.",
+  "bio_body": [
+    "Active in film production since 2002 and a full-time editor since 2007. Her work spans commercials, online films, music videos, short films, dance films, and documentaries \u2014 including work for Amazon Prime.",
+    "Known for a strong sense of rhythm and timing, she brings a musical quality to every edit. Fast, precise, and always searching for the emotional core of the story.",
+    "She maintains her own edit suite and a portable setup for location work. A big fan of poolside edit suites."
+  ],
+  "tools": ["Adobe Premiere Pro", "Final Cut Pro", "DaVinci Resolve", "After Effects"],
+  "specialties": ["Commercials", "Music Videos", "Documentaries", "Short Films", "Color Grading"],
+  "contact": {
+    "email": "edit@amberhooijmans.nl",
+    "phone": "+31 (0)6 4142 9175",
+    "phone_href": "+31641429175",
+    "location": "Amsterdam, The Netherlands"
+  }
+}

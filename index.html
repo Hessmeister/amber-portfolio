@@ -69,10 +69,9 @@
   <div class="reel-container">
     <span class="reel-label">Showreel 2025</span>
     <div class="reel-video">
-      <div class="reel-placeholder">
-        <!-- Replace this div with a Vimeo/YouTube iframe -->
+      <div class="reel-placeholder" id="reelPlaceholder">
         <img class="reel-still" src="assets/images/showreel-still.jpg" alt="Showreel still">
-        <button class="play-btn" aria-label="Play showreel">
+        <button class="play-btn" id="reelPlayBtn" aria-label="Play showreel">
           <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
             <path d="M24 14L0 28V0L24 14Z" fill="currentColor"/>
           </svg>
@@ -89,229 +88,18 @@
     <h2>Selected Work</h2>
   </div>
 
-  <!-- Filter bar -->
-  <div class="filter-bar reveal">
-    <button class="filter-btn is-active" data-filter="all">All<sup>9</sup></button>
-    <button class="filter-btn" data-filter="commercial">Commercial<sup>4</sup></button>
-    <button class="filter-btn" data-filter="film">Film<sup>2</sup></button>
-    <button class="filter-btn" data-filter="music-video">Music Video<sup>1</sup></button>
-    <button class="filter-btn" data-filter="documentary">Documentary<sup>1</sup></button>
-    <button class="filter-btn" data-filter="short-film">Short Film<sup>1</sup></button>
+  <!-- Filter bar — counts updated by JS -->
+  <div class="filter-bar reveal" id="filterBar">
+    <button class="filter-btn is-active" data-filter="all">All<sup id="count-all"></sup></button>
+    <button class="filter-btn" data-filter="commercial">Commercial<sup id="count-commercial"></sup></button>
+    <button class="filter-btn" data-filter="film">Film<sup id="count-film"></sup></button>
+    <button class="filter-btn" data-filter="music-video">Music Video<sup id="count-music-video"></sup></button>
+    <button class="filter-btn" data-filter="documentary">Documentary<sup id="count-documentary"></sup></button>
+    <button class="filter-btn" data-filter="short-film">Short Film<sup id="count-short-film"></sup></button>
   </div>
 
-  <!-- Archive grid -->
-  <div class="project-archive" id="projectArchive">
-
-    <!-- KPN -->
-    <div class="project-item reveal" data-category="commercial">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/kpn.jpg" alt="KPN">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Commercial</span>
-            <span class="project-year">2024</span>
-          </div>
-          <h3 class="project-name">KPN</h3>
-          <span class="project-credits">Dir. Jacobine van Hellemond</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Peggy -->
-    <div class="project-item reveal" data-category="short-film">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/peggy.jpg" alt="Peggy">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Short Film</span>
-            <span class="project-year">2022</span>
-          </div>
-          <h3 class="project-name">Peggy</h3>
-          <span class="project-credits">Dir. Andreas Pasvantis</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- KWF -->
-    <div class="project-item reveal" data-category="commercial">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/kwf.jpg" alt="KWF">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Commercial</span>
-            <span class="project-year">2023</span>
-          </div>
-          <h3 class="project-name">KWF</h3>
-          <span class="project-credits">Dir. Jacobine van Hellemond</span>
-          <span class="project-extra">KWF Kankerbestrijding</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- The Bird -->
-    <div class="project-item reveal" data-category="music-video">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/the-bird.jpg" alt="The Bird — Sing Me A Song">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Music Video</span>
-            <span class="project-year">2022</span>
-          </div>
-          <h3 class="project-name">The Bird — Sing Me A Song</h3>
-          <span class="project-credits">Dir. Ruben van Leer</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- DGTL -->
-    <div class="project-item reveal" data-category="film">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/dgtl.jpg" alt="DGTL">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Festival Film</span>
-            <span class="project-year">2023</span>
-          </div>
-          <h3 class="project-name">DGTL</h3>
-          <span class="project-credits">Dir. Aaron van Valen</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Scotch & Soda -->
-    <div class="project-item reveal" data-category="film">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/scotch-soda.jpg" alt="Scotch &amp; Soda">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Fashion Film</span>
-            <span class="project-year">2022</span>
-          </div>
-          <h3 class="project-name">Scotch &amp; Soda</h3>
-          <span class="project-credits">Dir. Fleur Fortun&eacute;</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Menzis -->
-    <div class="project-item reveal" data-category="commercial">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/menzis.jpg" alt="Menzis">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Commercial</span>
-            <span class="project-year">2024</span>
-          </div>
-          <h3 class="project-name">Menzis</h3>
-          <span class="project-credits">Dir. Ralf Demesmaeker</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Lapierre -->
-    <div class="project-item reveal" data-category="commercial">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/lapierre.jpg" alt="Lapierre">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Commercial</span>
-            <span class="project-year">2023</span>
-          </div>
-          <h3 class="project-name">Lapierre</h3>
-          <span class="project-credits">Dir. Ruben van Leer</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Over Grenzen -->
-    <div class="project-item reveal" data-category="documentary">
-      <a href="#" class="project-link">
-        <div class="project-thumb">
-          <img class="thumb-img" src="assets/images/over-grenzen.jpg" alt="Over Grenzen">
-          <div class="project-overlay">
-            <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
-            </svg>
-          </div>
-        </div>
-        <div class="project-meta">
-          <div class="project-header-row">
-            <span class="project-type">Documentary Series</span>
-            <span class="project-year">2023</span>
-          </div>
-          <h3 class="project-name">Over Grenzen</h3>
-          <span class="project-credits">Multiple Directors</span>
-          <span class="project-extra">Amazon Prime Video</span>
-        </div>
-      </a>
-    </div>
-
-  </div>
+  <!-- Archive grid — populated by JS from data/projects.json -->
+  <div class="project-archive" id="projectArchive"></div>
 </section>
 
 <!-- ABOUT -->
@@ -325,33 +113,8 @@
     <div class="about-image reveal">
       <img src="assets/images/amber-photo.jpg" alt="Amber Hooijmans" class="about-photo">
     </div>
-    <div class="about-content reveal">
-      <p class="about-lead">Born in The Hague &mdash; the one by the sea that isn&rsquo;t the capital &mdash; now based in Amsterdam.</p>
-      <p>Active in film production since 2002 and a full-time editor since 2007. Her work spans commercials, online films, music videos, short films, dance films, and documentaries &mdash; including work for Amazon Prime.</p>
-      <p>Known for a strong sense of rhythm and timing, she brings a musical quality to every edit. Fast, precise, and always searching for the emotional core of the story.</p>
-      <p>She maintains her own edit suite and a portable setup for location work. A big fan of poolside edit suites.</p>
-
-      <div class="about-tools">
-        <h3>Tools</h3>
-        <div class="tool-tags">
-          <span class="tool-tag">Adobe Premiere Pro</span>
-          <span class="tool-tag">Final Cut Pro</span>
-          <span class="tool-tag">DaVinci Resolve</span>
-          <span class="tool-tag">After Effects</span>
-        </div>
-      </div>
-
-      <div class="about-specialties">
-        <h3>Specialties</h3>
-        <div class="tool-tags">
-          <span class="tool-tag">Commercials</span>
-          <span class="tool-tag">Music Videos</span>
-          <span class="tool-tag">Documentaries</span>
-          <span class="tool-tag">Short Films</span>
-          <span class="tool-tag">Color Grading</span>
-        </div>
-      </div>
-    </div>
+    <!-- Populated by JS from data/about.json -->
+    <div class="about-content reveal" id="aboutContent"></div>
   </div>
 </section>
 
@@ -362,20 +125,8 @@
       <span class="section-num">03</span>
       <h2>Let&rsquo;s work<br>together</h2>
     </div>
-    <div class="contact-details">
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <a href="mailto:edit@amberhooijmans.nl" class="contact-value contact-link">edit@amberhooijmans.nl</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">Phone</span>
-        <a href="tel:+31641429175" class="contact-value contact-link">+31 (0)6 4142 9175</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">Location</span>
-        <span class="contact-value">Amsterdam, The Netherlands</span>
-      </div>
-    </div>
+    <!-- Populated by JS from data/about.json -->
+    <div class="contact-details" id="contactDetails"></div>
   </div>
 </section>
 
@@ -387,6 +138,15 @@
   </div>
 </footer>
 
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="modal-close" id="modalClose" aria-label="Close video">&times;</button>
+  <div class="modal-inner">
+    <div class="modal-iframe-wrap" id="modalIframeWrap"></div>
+  </div>
+</div>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
