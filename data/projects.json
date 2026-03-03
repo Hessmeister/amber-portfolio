@@ -1,94 +1,164 @@
 {
   "projects": [
     {
-      "title": "KPN",
-      "category": "commercial",
-      "type": "Commercial",
-      "year": "2024",
-      "director": "Jacobine van Hellemond",
-      "extra": "",
-      "thumbnail": "assets/images/kpn.jpg",
-      "vimeo_url": ""
-    },
-    {
       "title": "Peggy",
-      "category": "short-film",
+      "category": "film",
       "type": "Short Film",
-      "year": "2022",
-      "director": "Andreas Pasvantis",
-      "extra": "",
-      "thumbnail": "assets/images/peggy.jpg",
-      "vimeo_url": ""
+      "year": "2025",
+      "vimeo_id": "1073861924",
+      "thumbnail": "assets/images/thumbnails/peggy.jpg",
+      "credits": {
+        "Director": "Andreas Pasvantis",
+        "DOP": "Katja van den Broeke",
+        "Super 8 & Photography": "Andreas Pasvantis",
+        "Music & Sound": "Diederik Idenburg",
+        "Colour Grade": "Black Kite Studios",
+        "Colourist": "Rich Fearon"
+      }
     },
     {
       "title": "KWF",
       "category": "commercial",
       "type": "Commercial",
-      "year": "2023",
-      "director": "Jacobine van Hellemond",
-      "extra": "KWF Kankerbestrijding",
-      "thumbnail": "assets/images/kwf.jpg",
-      "vimeo_url": ""
+      "year": "2025",
+      "vimeo_id": "1073864764",
+      "thumbnail": "assets/images/thumbnails/kwf.jpg",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "hazazaH",
+        "Agency": "Monks",
+        "DOP": "Katja van den Broeke",
+        "Music": "Jet van der Steen, Jesper Hoekstra, Nienke Leone van der Velden",
+        "Grade": "Joppo, De Grot"
+      }
     },
     {
-      "title": "The Bird \u2014 Sing Me A Song",
-      "category": "music-video",
-      "type": "Music Video",
-      "year": "2022",
-      "director": "Ruben van Leer",
-      "extra": "",
-      "thumbnail": "assets/images/the-bird.jpg",
-      "vimeo_url": ""
+      "title": "The Bird — Sing Me A Song",
+      "category": "film",
+      "type": "Short Film",
+      "year": "2025",
+      "vimeo_id": "1073863233",
+      "thumbnail": "assets/images/thumbnails/the-bird.jpg",
+      "credits": {
+        "Director": "Ruben van Leer",
+        "DOP": "Ezra Reverda",
+        "Music": "Tigran Hamasyan",
+        "Written by": "Philip M. Howe & Ruben van Leer",
+        "Additional Editing": "Florian Millot & Ruben van Leer",
+        "Grade": "Ruben Labree"
+      }
     },
     {
       "title": "DGTL",
       "category": "film",
       "type": "Festival Film",
-      "year": "2023",
-      "director": "Aaron van Valen",
-      "extra": "",
-      "thumbnail": "assets/images/dgtl.jpg",
-      "vimeo_url": ""
-    },
-    {
-      "title": "Scotch & Soda",
-      "category": "film",
-      "type": "Fashion Film",
-      "year": "2022",
-      "director": "Fleur Fortu\u00e9",
-      "extra": "",
-      "thumbnail": "assets/images/scotch-soda.jpg",
-      "vimeo_url": ""
+      "year": "2024",
+      "vimeo_id": "935004766",
+      "thumbnail": "assets/images/thumbnails/dgtl.jpg",
+      "credits": {
+        "Director": "Aaron van Valen",
+        "Production": "DGTL",
+        "DOP": "Martijn Melis",
+        "Producer": "Lino Kempees",
+        "Art Direction": "Sanne Schat",
+        "Sound Design": "Rogier Wijtmans",
+        "Grade & VFX": "Laurens Orij at Crabsalad",
+        "Music": "Martijn Melis"
+      }
     },
     {
       "title": "Menzis",
       "category": "commercial",
       "type": "Commercial",
-      "year": "2024",
-      "director": "Ralf Demesmaeker",
-      "extra": "",
-      "thumbnail": "assets/images/menzis.jpg",
-      "vimeo_url": ""
+      "year": "2023",
+      "vimeo_id": "817202833",
+      "thumbnail": "assets/images/thumbnails/menzis.jpg",
+      "credits": {
+        "Director": "Ralf Demesmaeker",
+        "Production": "Eyeforce",
+        "Agency": "Roorda",
+        "DOP": "Tim Kerbosch",
+        "Grade": "Ruben Labree"
+      }
     },
     {
       "title": "Lapierre",
       "category": "commercial",
       "type": "Commercial",
+      "year": "2022",
+      "vimeo_id": "667685324",
+      "thumbnail": "assets/images/thumbnails/lapierre.jpg",
+      "credits": {
+        "Director": "Ruben Van Leer",
+        "Production": "Artillerie",
+        "DOP": "Ezra Reverda",
+        "Producer": "Philippe Avendaño Vera",
+        "VFX": "Becanti Wijnbergh",
+        "Grade": "Wietse van Bezooijen",
+        "Online & Finishing": "The Compound",
+        "Music": "Rimer London"
+      }
+    },
+    {
+      "title": "KPN",
+      "category": "commercial",
+      "type": "Commercial",
       "year": "2023",
-      "director": "Ruben van Leer",
-      "extra": "",
-      "thumbnail": "assets/images/lapierre.jpg",
-      "vimeo_url": ""
+      "vimeo_id": "817205311",
+      "thumbnail": "assets/images/thumbnails/kpn.jpg",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "hazazaH",
+        "Agency": "dentsuACHTUNG!",
+        "DOP": "Douwe Hennink",
+        "Grade": "Joppo @ De Grot"
+      }
+    },
+    {
+      "title": "Scoon",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2022",
+      "vimeo_id": "667726880",
+      "thumbnail": "assets/images/thumbnails/scoon.jpg",
+      "credits": {
+        "Director": "Alexander Braam",
+        "Production": "Mike Teevee",
+        "DOP": "Myrthe Mosterman",
+        "Grade": "Nick Sanders",
+        "Sound": "Most"
+      }
+    },
+    {
+      "title": "Scotch & Soda",
+      "category": "film",
+      "type": "Fashion Film",
+      "year": "2017",
+      "vimeo_id": "238951610",
+      "thumbnail": "assets/images/thumbnails/scotch-soda.jpg",
+      "credits": {
+        "Director": "Fleur Fortuné",
+        "Agency": "133/Publicis Paris",
+        "Creative Director": "Paulo Martins",
+        "Producer": "Erika Vocking",
+        "Music & Sound": "Massive Music",
+        "Post Production": "The Ambassadors"
+      }
     },
     {
       "title": "Over Grenzen",
       "category": "documentary",
       "type": "Documentary Series",
       "year": "2023",
-      "director": "Multiple Directors",
-      "extra": "Amazon Prime Video",
-      "thumbnail": "assets/images/over-grenzen.jpg",
-      "vimeo_url": ""
+      "youtube_id": "ArZE6e1M-Rc",
+      "thumbnail": "assets/images/thumbnails/over-grenzen.jpg",
+      "credits": {
+        "Directors": "Joost van der Valk, Anna van 't Hek, Sakir Khader, Duco Coops, Minna Sedmakov, Joey Boink",
+        "Production": "Villain Studios",
+        "Executive Producers": "Stefan Tieleman, Jelmar Hagen, Thijs Schreuder",
+        "DOPs": "Tim Kerbosch, Lennard Brans, Sam Vis, Jarl Piepers, Dirk-Jan Kerkkamp",
+        "Music": "Daan Temmink"
+      }
     }
   ]
 }

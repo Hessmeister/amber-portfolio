@@ -524,11 +524,15 @@ nav.scrolled {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.7s var(--ease);
+  /* parallax handled by JS — base scale slightly above 1 so translateY has room */
+  transform: translateY(0) scale(1.07);
+  will-change: transform;
+  transition: transform 0.1s linear;
 }
 
+/* On hover, let parallax JS drive transform; add subtle extra scale for polish */
 .project-item:hover .thumb-img {
-  transform: scale(1.04);
+  transition: transform 0.6s var(--ease);
 }
 
 .project-overlay {
@@ -603,22 +607,41 @@ nav.scrolled {
   color: var(--accent);
 }
 
-.project-credits {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  font-weight: 400;
-  color: var(--text-dim);
-  letter-spacing: 0.03em;
+/* Primary credits — always visible */
+.project-primary-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
-.project-extra {
+/* Extra credits — revealed on hover */
+.project-extra-credits {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  transition: max-height 0.4s var(--ease), opacity 0.35s ease;
+}
+
+.project-item:hover .project-extra-credits {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.credit-line {
   font-family: var(--sans);
   font-size: 0.68rem;
   font-weight: 400;
   color: var(--text-dim);
   letter-spacing: 0.03em;
   display: block;
-  margin-top: 0.1rem;
+}
+
+.credit-key {
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 /* ============================
@@ -652,9 +675,9 @@ nav.scrolled {
 }
 
 .about-lead {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: var(--text);
   margin-bottom: 1.5rem;
@@ -987,4 +1010,353 @@ nav.scrolled {
 @media (max-width: 480px) {
   .hero-line { letter-spacing: -0.02em; }
   .filter-btn { font-size: 0.65rem; padding: 0.35rem 0.85rem; }
+}
+
+/* ============================
+   Nav active state (archive page)
+   ============================ */
+.nav-active {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================
+   Archive CTA (homepage → archive)
+   ============================ */
+.work-archive-link {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2.5rem 2rem;
+}
+
+.archive-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 0.25rem;
+  transition: color 0.3s, border-color 0.3s, gap 0.3s;
+}
+
+.archive-cta svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.archive-cta:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  gap: 0.9rem;
+}
+
+.archive-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ============================
+   Archive page
+   ============================ */
+.archive-page {
+  min-height: 100vh;
+}
+
+/* Header */
+.arc-header {
+  padding: 8rem 2.5rem 3rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.arc-header-inner .section-num {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.arc-title-main {
+  font-family: var(--sans);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.arc-subtitle {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* Filters */
+.arc-filters {
+  padding: 2rem 2.5rem 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: sticky;
+  top: 60px;
+  background: var(--bg);
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+}
+
+.arc-filter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.arc-category-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Search */
+.arc-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+  min-width: 200px;
+}
+
+.arc-search-icon {
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.arc-search {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.arc-search::placeholder {
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+
+/* Year pills */
+.arc-year-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.year-btn {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  padding: 0.2rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.year-btn:hover {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.year-btn.is-active {
+  border-color: var(--text);
+  color: var(--text);
+  background: transparent;
+}
+
+/* Grid */
+.arc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.1rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 6rem;
+}
+
+/* Card */
+.arc-card {
+  border: none;
+}
+
+.arc-link {
+  display: block;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid var(--border);
+  transition: background 0.25s;
+}
+
+.arc-link:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+.arc-thumb {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  background: #e8e0d8;
+}
+
+.arc-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.arc-card:hover .arc-thumb img {
+  transform: scale(1.04);
+}
+
+.arc-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0);
+  transition: background 0.35s;
+}
+
+.arc-card:hover .arc-overlay {
+  background: rgba(0,0,0,0.18);
+}
+
+.arc-play-icon {
+  color: rgba(255,255,255,0.9);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.4s var(--ease);
+}
+
+.arc-card:hover .arc-play-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Archive card meta */
+.arc-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.arc-type {
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.arc-year {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.arc-name {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+  transition: color 0.3s;
+}
+
+.arc-card:hover .arc-name {
+  color: var(--accent);
+}
+
+.arc-primary-credits,
+.arc-extra-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.arc-extra-credits {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s var(--ease), opacity 0.35s ease;
+  margin-top: 0;
+}
+
+.arc-card:hover .arc-extra-credits {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.3rem;
+}
+
+.arc-credit-line {
+  font-size: 0.63rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+.arc-credit-key {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Empty state */
+.arc-empty {
+  text-align: center;
+  padding: 6rem 2rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  display: none;
+}
+
+/* Archive responsive */
+@media (max-width: 1100px) {
+  .arc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .arc-header { padding: 7rem 1.5rem 2rem; }
+  .arc-filters { padding: 1.5rem 1.5rem 1rem; top: 55px; }
+  .arc-filter-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .arc-search-wrap { min-width: 100%; }
+  .arc-grid { grid-template-columns: 1fr; padding: 1.5rem 1.5rem 4rem; }
+}
+
+@media (max-width: 480px) {
+  .arc-title-main { font-size: 2.5rem; }
+  .year-btn { font-size: 0.58rem; padding: 0.15rem 0.55rem; }
 }

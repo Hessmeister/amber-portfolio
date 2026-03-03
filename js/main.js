@@ -9,27 +9,41 @@ const PLAY_ICON_SVG = `
     <path d="M20 16L32 24L20 32V16Z" fill="currentColor"/>
   </svg>`;
 
-/* --- Extract Vimeo video ID from a URL --- */
-function getVimeoId(url) {
-  if (!url) return null;
-  const match = url.match(/vimeo\.com\/(?:.*\/)?(\d+)/);
-  return match ? match[1] : null;
+/* ---- Credit key sets ---- */
+const PRIMARY_KEYS = ['Director', 'Directors', 'Production', 'Agency'];
+
+function buildCreditLines(credits) {
+  const primary = [];
+  const extra   = [];
+  for (const [key, val] of Object.entries(credits || {})) {
+    if (!val) continue;
+    const line = `<span class="credit-line"><span class="credit-key">${key}.</span> ${val}</span>`;
+    if (PRIMARY_KEYS.includes(key)) primary.push(line);
+    else extra.push(line);
+  }
+  return { primary, extra };
 }
 
-/* --- Render a single project card --- */
+/* ---- Render a single project card ---- */
 function renderProjectCard(project) {
-  const vimeoId = getVimeoId(project.vimeo_url);
-  const extraHtml = project.extra
-    ? `<span class="project-extra">${project.extra}</span>` : '';
+  const vimeoId   = project.vimeo_id   || null;
+  const youtubeId = project.youtube_id || null;
+  const hasVideo  = vimeoId || youtubeId;
+
+  const vimeoAttr   = vimeoId   ? ` data-vimeo="${vimeoId}"`     : '';
+  const youtubeAttr = youtubeId ? ` data-youtube="${youtubeId}"` : '';
+
+  const { primary, extra } = buildCreditLines(project.credits);
 
   const el = document.createElement('div');
   el.className = 'project-item reveal';
   el.dataset.category = project.category;
+
   el.innerHTML = `
-    <a href="#" class="project-link"${vimeoId ? ` data-vimeo="${vimeoId}"` : ''}>
+    <a href="#" class="project-link"${vimeoAttr}${youtubeAttr}>
       <div class="project-thumb">
         <img class="thumb-img" src="${project.thumbnail}" alt="${project.title}" loading="lazy">
-        <div class="project-overlay">${PLAY_ICON_SVG}</div>
+        <div class="project-overlay">${hasVideo ? PLAY_ICON_SVG : ''}</div>
       </div>
       <div class="project-meta">
         <div class="project-header-row">
@@ -37,14 +51,14 @@ function renderProjectCard(project) {
           <span class="project-year">${project.year}</span>
         </div>
         <h3 class="project-name">${project.title}</h3>
-        <span class="project-credits">Dir. ${project.director}</span>
-        ${extraHtml}
+        <div class="project-primary-credits">${primary.join('')}</div>
+        ${extra.length ? `<div class="project-extra-credits">${extra.join('')}</div>` : ''}
       </div>
     </a>`;
   return el;
 }
 
-/* --- Render the full project archive from JSON --- */
+/* ---- Render the full project archive from JSON ---- */
 async function renderProjects() {
   const archive = document.getElementById('projectArchive');
   if (!archive) return;
@@ -63,7 +77,7 @@ async function renderProjects() {
   });
 }
 
-/* --- Render about & contact from JSON --- */
+/* ---- Render about & contact from JSON ---- */
 async function renderAbout() {
   const aboutEl   = document.getElementById('aboutContent');
   const contactEl = document.getElementById('contactDetails');
@@ -99,7 +113,7 @@ async function renderAbout() {
       </div>
       <div class="contact-item">
         <span class="contact-label">Phone</span>
-        <a href="tel:+${c.phone_href}" class="contact-value contact-link">${c.phone}</a>
+        <a href="tel:${c.phone_href}" class="contact-value contact-link">${c.phone}</a>
       </div>
       <div class="contact-item">
         <span class="contact-label">Location</span>
@@ -108,15 +122,15 @@ async function renderAbout() {
   }
 }
 
-/* --- Video modal --- */
+/* ---- Video modal (Vimeo + YouTube) ---- */
 function initModal() {
   const modal = document.getElementById('videoModal');
   const wrap  = document.getElementById('modalIframeWrap');
   const close = document.getElementById('modalClose');
+  if (!modal) return;
 
-  function openModal(vimeoId) {
-    wrap.innerHTML = `<iframe
-      src="https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff"
+  function openModal(src) {
+    wrap.innerHTML = `<iframe src="${src}"
       allow="autoplay; fullscreen; picture-in-picture"
       allowfullscreen></iframe>`;
     modal.classList.add('is-open');
@@ -134,16 +148,26 @@ function initModal() {
     const link = e.target.closest('.project-link');
     if (!link) return;
     e.preventDefault();
-    const id = link.dataset.vimeo;
-    if (id) openModal(id);
+    const vid = link.dataset.vimeo;
+    const yt  = link.dataset.youtube;
+    if (vid) {
+      openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`);
+    } else if (yt) {
+      openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`);
+    }
   });
 
   // Showreel play button
   const reelBtn = document.getElementById('reelPlayBtn');
   if (reelBtn) {
     reelBtn.addEventListener('click', () => {
-      const reelId = reelBtn.dataset.vimeo || '';
-      if (reelId) openModal(reelId);
+      const vid = reelBtn.dataset.vimeo;
+      const yt  = reelBtn.dataset.youtube;
+      if (vid) {
+        openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`);
+      } else if (yt) {
+        openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`);
+      }
     });
   }
 
@@ -154,7 +178,42 @@ function initModal() {
   });
 }
 
-/* --- Hero letter animation --- */
+/* ---- Parallax ---- */
+function initParallax() {
+  const heroContent = document.querySelector('.hero-content');
+  let ticking = false;
+
+  function tick() {
+    const sy = window.scrollY;
+
+    // Hero content drifts up gently as you scroll
+    if (heroContent) {
+      heroContent.style.transform = `translateY(${sy * 0.22}px)`;
+    }
+
+    // Thumbnail inner parallax
+    document.querySelectorAll('.project-item').forEach(item => {
+      const img = item.querySelector('.thumb-img');
+      if (!img) return;
+      const rect = item.getBoundingClientRect();
+      const vh   = window.innerHeight;
+      if (rect.bottom < 0 || rect.top > vh) return;
+      // progress: -1 (item below fold) → 0 (center) → 1 (item above fold)
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      img.style.transform = `translateY(${progress * 28}px) scale(1.07)`;
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(tick); ticking = true; }
+  }, { passive: true });
+
+  tick(); // initial call
+}
+
+/* ---- Hero letter animation ---- */
 function initHeroAnimation() {
   document.querySelectorAll('.hero-line').forEach((line, lineIndex) => {
     const text = line.textContent;
@@ -169,7 +228,7 @@ function initHeroAnimation() {
   });
 }
 
-/* --- Nav scroll effect --- */
+/* ---- Nav scroll effect ---- */
 function initNav() {
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
@@ -177,7 +236,7 @@ function initNav() {
   onScroll();
 }
 
-/* --- Mobile menu --- */
+/* ---- Mobile menu ---- */
 function initMobileMenu() {
   const toggle = document.getElementById('navToggle');
   const links  = document.getElementById('navLinks');
@@ -197,7 +256,7 @@ function initMobileMenu() {
   });
 }
 
-/* --- Scroll reveal --- */
+/* ---- Scroll reveal ---- */
 function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -211,7 +270,7 @@ function initScrollReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-/* --- Smooth scroll for anchor links --- */
+/* ---- Smooth scroll for anchor links ---- */
 function initSmoothScroll() {
   const nav = document.getElementById('nav');
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -226,10 +285,11 @@ function initSmoothScroll() {
   });
 }
 
-/* --- Project filter --- */
+/* ---- Project filter ---- */
 function initFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const archive    = document.getElementById('projectArchive');
+  if (!archive) return;
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -252,7 +312,7 @@ function initFilter() {
   });
 }
 
-/* --- Netlify Identity redirect helper --- */
+/* ---- Netlify Identity redirect helper ---- */
 function initNetlifyIdentity() {
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on('init', user => {
@@ -280,4 +340,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollReveal();
   initFilter();
   initModal();
+  initParallax();
 });

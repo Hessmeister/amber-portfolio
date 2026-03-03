@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Archive — Amber Hooijmans</title>
+  <meta name="description" content="Full work archive of video editor Amber Hooijmans — 90+ projects spanning commercials, films, music videos and documentaries since 2012.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="archive-page">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Amber Hooijmans</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#work">Work</a>
+    <a href="archive.html" class="nav-active">Archive</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <button class="nav-hamburger" id="navToggle" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<!-- ARCHIVE HEADER -->
+<header class="arc-header">
+  <div class="arc-header-inner">
+    <span class="section-num">Archive</span>
+    <h1 class="arc-title-main">All Work</h1>
+    <p class="arc-subtitle" id="arcSubtitle">93 projects · 2012–2025</p>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<div class="arc-filters" id="arcFilters">
+  <div class="arc-filter-top">
+    <div class="arc-category-btns" id="arcCategoryBtns">
+      <button class="filter-btn is-active" data-filter="all">All <sup id="arc-count-all"></sup></button>
+      <button class="filter-btn" data-filter="commercial">Commercial <sup id="arc-count-commercial"></sup></button>
+      <button class="filter-btn" data-filter="film">Film <sup id="arc-count-film"></sup></button>
+      <button class="filter-btn" data-filter="music-video">Music Video <sup id="arc-count-music-video"></sup></button>
+      <button class="filter-btn" data-filter="documentary">Documentary <sup id="arc-count-documentary"></sup></button>
+    </div>
+    <div class="arc-search-wrap">
+      <svg class="arc-search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M10 10L13 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <input class="arc-search" id="arcSearch" type="text" placeholder="Search title or director…" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="arc-year-btns" id="arcYearBtns">
+    <!-- populated by JS -->
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="arc-grid" id="arcGrid"></div>
+
+<!-- EMPTY STATE -->
+<div class="arc-empty" id="arcEmpty">
+  <p>No projects match your search.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-name">Amber Hooijmans</span>
+    <span class="footer-year">&copy; 2026</span>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="modal-close" id="modalClose" aria-label="Close video">&times;</button>
+  <div class="modal-inner">
+    <div class="modal-iframe-wrap" id="modalIframeWrap"></div>
+  </div>
+</div>
+
+<script src="js/archive.js"></script>
+</body>
+</html>
