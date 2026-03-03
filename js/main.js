@@ -10,18 +10,22 @@ const PLAY_ICON_SVG = `
   </svg>`;
 
 /* ---- Credit key sets ---- */
-const PRIMARY_KEYS = ['Director', 'Directors', 'Production', 'Agency'];
+const PRIMARY_KEYS = ['Director', 'Directors', 'Production'];
 
 function buildCreditLines(credits) {
   const primary = [];
-  const extra   = [];
   for (const [key, val] of Object.entries(credits || {})) {
     if (!val) continue;
-    const line = `<span class="credit-line"><span class="credit-key">${key}.</span> ${val}</span>`;
-    if (PRIMARY_KEYS.includes(key)) primary.push(line);
-    else extra.push(line);
+    if (PRIMARY_KEYS.includes(key)) {
+      primary.push(`<span class="credit-line"><span class="credit-key">${key}.</span> ${val}</span>`);
+    }
   }
-  return { primary, extra };
+  // All credits as plain text for SEO (hidden from view)
+  const seoText = Object.entries(credits || {})
+    .filter(([, v]) => v)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join(', ');
+  return { primary, seoText };
 }
 
 /* ---- Render a single project card ---- */
@@ -33,7 +37,7 @@ function renderProjectCard(project) {
   const vimeoAttr   = vimeoId   ? ` data-vimeo="${vimeoId}"`     : '';
   const youtubeAttr = youtubeId ? ` data-youtube="${youtubeId}"` : '';
 
-  const { primary, extra } = buildCreditLines(project.credits);
+  const { primary, seoText } = buildCreditLines(project.credits);
 
   const el = document.createElement('div');
   el.className = 'project-item reveal';
@@ -51,10 +55,8 @@ function renderProjectCard(project) {
           <span class="project-year">${project.year}</span>
         </div>
         <h3 class="project-name">${project.title}</h3>
-        <div class="project-credits-wrap">
-          <div class="project-primary-credits">${primary.join('')}</div>
-          ${extra.length ? `<div class="project-extra-credits">${extra.join('')}</div>` : ''}
-        </div>
+        <div class="project-primary-credits">${primary.join('')}</div>
+        ${seoText ? `<span class="sr-only">${seoText}</span>` : ''}
       </div>
     </a>`;
   return el;

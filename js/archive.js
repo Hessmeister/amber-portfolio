@@ -8,23 +8,26 @@ const PLAY_SVG = `<svg class="arc-play-icon" width="36" height="36" viewBox="0 0
 </svg>`;
 
 /* ---- Credit label helpers ---- */
-const PRIMARY_KEYS = ['Director', 'Directors', 'Production', 'Agency'];
+const PRIMARY_KEYS = ['Director', 'Directors', 'Production'];
 
 function buildCreditLines(credits) {
   const primary = [];
-  const extra   = [];
   for (const [key, val] of Object.entries(credits)) {
     if (!val) continue;
-    const line = `<span class="arc-credit-line"><span class="arc-credit-key">${key}.</span> ${val}</span>`;
-    if (PRIMARY_KEYS.includes(key)) primary.push(line);
-    else extra.push(line);
+    if (PRIMARY_KEYS.includes(key)) {
+      primary.push(`<span class="arc-credit-line"><span class="arc-credit-key">${key}.</span> ${val}</span>`);
+    }
   }
-  return { primary, extra };
+  const seoText = Object.entries(credits)
+    .filter(([, v]) => v)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join(', ');
+  return { primary, seoText };
 }
 
 /* ---- Render one archive card ---- */
 function renderCard(project) {
-  const { primary, extra } = buildCreditLines(project.credits || {});
+  const { primary, seoText } = buildCreditLines(project.credits || {});
   const vimeoAttr  = project.vimeo_id  ? ` data-vimeo="${project.vimeo_id}"`   : '';
   const youtubeAttr= project.youtube_id? ` data-youtube="${project.youtube_id}"`: '';
   const hasVideo   = project.vimeo_id || project.youtube_id;
@@ -50,7 +53,7 @@ function renderCard(project) {
         </div>
         <h3 class="arc-name">${project.title}</h3>
         <div class="arc-primary-credits">${primary.join('')}</div>
-        ${extra.length ? `<div class="arc-extra-credits">${extra.join('')}</div>` : ''}
+        ${seoText ? `<span class="sr-only">${seoText}</span>` : ''}
       </div>
     </a>`;
   return card;
