@@ -78,7 +78,13 @@ async function renderProjects() {
   const res = await fetch('data/projects.json');
   const { projects } = await res.json();
 
-  projects.forEach(project => archive.appendChild(renderProjectCard(project)));
+  // Grid depths (px of travel): matches column spans [6,5,5,6,5,7,6,5,7]
+  const DEPTHS = [65, 40, 40, 65, 40, 95, 65, 40, 95];
+  projects.forEach((project, i) => {
+    const card = renderProjectCard(project);
+    card.dataset.depth = DEPTHS[i] ?? 55;
+    archive.appendChild(card);
+  });
 
   // Update filter counts
   const counts = { all: projects.length };
@@ -224,21 +230,6 @@ function initModal() {
 function initParallax() {
   const heroContent = document.querySelector('.hero-content');
   let ticking = false;
-  let itemCache = [];
-
-  // Build per-item depth factors based on rendered width (bigger = closer = faster)
-  function buildItemCache() {
-    const container = document.querySelector('.project-archive');
-    if (!container) return;
-    const containerW = container.offsetWidth || 1;
-    itemCache = Array.from(container.querySelectorAll('.project-item.parallax-ready'))
-      .map(el => {
-        const relW  = Math.min(el.offsetWidth / containerW, 1);
-        // Bigger items move more — maps ~40%→30px, ~50%→45px, ~58%→58px travel
-        const depth = 20 + Math.pow(relW, 1.5) * 90;
-        return { el, depth, img: el.querySelector('.thumb-img') };
-      });
-  }
 
   function tick() {
     const sy = window.scrollY;
@@ -249,19 +240,17 @@ function initParallax() {
       heroContent.style.transform = `translateY(${sy * 0.22}px)`;
     }
 
-    // Rebuild cache when new items become parallax-ready
-    const readyNow = document.querySelectorAll('.project-item.parallax-ready').length;
-    if (readyNow !== itemCache.length) buildItemCache();
-
-    itemCache.forEach(({ el, depth, img }) => {
-      const rect = el.getBoundingClientRect();
+    // Card-level parallax — depth baked per card via data-depth
+    document.querySelectorAll('.project-item[data-depth]').forEach(item => {
+      const rect = item.getBoundingClientRect();
       if (rect.bottom < -300 || rect.top > vh + 300) return;
-      // progress: negative = below viewport centre, positive = above
+      // progress: -1 (below fold) → 0 (centred) → +1 (above fold)
       const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      // Whole card shifts — bigger = more travel (feels closer)
-      el.style.transform = `translateY(${progress * depth}px)`;
-      // Inner image still gets its own smaller shift for extra depth layering
-      if (img) img.style.transform = `translateY(${progress * 18}px) scale(1.07)`;
+      const depth    = parseFloat(item.dataset.depth) || 55;
+      item.style.transform = `translateY(${progress * depth}px)`;
+      // Inner image shifts a little less — creates layered depth inside the card
+      const img = item.querySelector('.thumb-img');
+      if (img) img.style.transform = `translateY(${progress * 20}px) scale(1.07)`;
     });
 
     ticking = false;
@@ -324,9 +313,12 @@ function initScrollReveal() {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
-        // After reveal animation completes, hand transform control to parallax
-        if (entry.target.classList.contains('project-item')) {
-          setTimeout(() => entry.target.classList.add('parallax-ready'), 750);
+        // After reveal animation completes, remove transform from transition
+        // so the parallax rAF loop can drive it without easing lag
+        if (entry.target.dataset.depth) {
+          setTimeout(() => {
+            entry.target.style.transition = 'opacity 0.7s cubic-bezier(0,0,0.2,1)';
+          }, 750);
         }
       }
     });
