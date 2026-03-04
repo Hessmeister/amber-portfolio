@@ -224,25 +224,44 @@ function initModal() {
 function initParallax() {
   const heroContent = document.querySelector('.hero-content');
   let ticking = false;
+  let itemCache = [];
+
+  // Build per-item depth factors based on rendered width (bigger = closer = faster)
+  function buildItemCache() {
+    const container = document.querySelector('.project-archive');
+    if (!container) return;
+    const containerW = container.offsetWidth || 1;
+    itemCache = Array.from(container.querySelectorAll('.project-item.parallax-ready'))
+      .map(el => {
+        const relW  = Math.min(el.offsetWidth / containerW, 1);
+        // Bigger items move more — maps ~40%→30px, ~50%→45px, ~58%→58px travel
+        const depth = 20 + Math.pow(relW, 1.5) * 90;
+        return { el, depth, img: el.querySelector('.thumb-img') };
+      });
+  }
 
   function tick() {
     const sy = window.scrollY;
+    const vh = window.innerHeight;
 
     // Hero content drifts up gently as you scroll
     if (heroContent) {
       heroContent.style.transform = `translateY(${sy * 0.22}px)`;
     }
 
-    // Thumbnail inner parallax
-    document.querySelectorAll('.project-item').forEach(item => {
-      const img = item.querySelector('.thumb-img');
-      if (!img) return;
-      const rect = item.getBoundingClientRect();
-      const vh   = window.innerHeight;
-      if (rect.bottom < 0 || rect.top > vh) return;
-      // progress: -1 (item below fold) → 0 (center) → 1 (item above fold)
+    // Rebuild cache when new items become parallax-ready
+    const readyNow = document.querySelectorAll('.project-item.parallax-ready').length;
+    if (readyNow !== itemCache.length) buildItemCache();
+
+    itemCache.forEach(({ el, depth, img }) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -300 || rect.top > vh + 300) return;
+      // progress: negative = below viewport centre, positive = above
       const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      img.style.transform = `translateY(${progress * 28}px) scale(1.07)`;
+      // Whole card shifts — bigger = more travel (feels closer)
+      el.style.transform = `translateY(${progress * depth}px)`;
+      // Inner image still gets its own smaller shift for extra depth layering
+      if (img) img.style.transform = `translateY(${progress * 18}px) scale(1.07)`;
     });
 
     ticking = false;
@@ -305,6 +324,10 @@ function initScrollReveal() {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
+        // After reveal animation completes, hand transform control to parallax
+        if (entry.target.classList.contains('project-item')) {
+          setTimeout(() => entry.target.classList.add('parallax-ready'), 750);
+        }
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
