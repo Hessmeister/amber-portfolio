@@ -75,6 +75,12 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(12px);
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .nav-logo {
   font-family: var(--sans);
   font-size: 0.7rem;
@@ -238,9 +244,8 @@ nav.scrolled {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.75rem;
   opacity: 0;
-  animation: fade-up 0.6s var(--ease) 2s forwards;
+  animation: fade-up 0.6s var(--ease) 1.8s forwards;
 }
 
 .available-dot {
@@ -1134,6 +1139,8 @@ nav.scrolled {
 
 @media (max-width: 768px) {
   nav { padding: 1.25rem 1.5rem; }
+
+  .hero-available { display: none; }
 
   .hero { padding: 0 1.5rem 2.5rem; }
 
