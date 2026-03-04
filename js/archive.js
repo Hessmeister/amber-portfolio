@@ -40,8 +40,12 @@ function renderCard(project) {
   card.dataset.title = project.title.toLowerCase();
   card.dataset.director = (project.credits?.Director || project.credits?.Directors || '').toLowerCase();
 
+  const projectData = encodeURIComponent(JSON.stringify({
+    title: project.title, type: project.category, year: project.year, credits: project.credits
+  }));
+
   card.innerHTML = `
-    <a class="arc-link" href="#"${vimeoAttr}${youtubeAttr}>
+    <a class="arc-link" href="#"${vimeoAttr}${youtubeAttr} data-project="${projectData}">
       <div class="arc-thumb">
         <img src="${thumb}" alt="${project.title}" loading="lazy" width="640" height="360">
         ${hasVideo ? `<div class="arc-overlay">${PLAY_SVG}</div>` : ''}
@@ -158,12 +162,26 @@ function initFilters(projects) {
 
 /* ---- Video modal ---- */
 function initModal() {
-  const modal = document.getElementById('videoModal');
-  const wrap  = document.getElementById('modalIframeWrap');
-  const close = document.getElementById('modalClose');
+  const modal  = document.getElementById('videoModal');
+  const wrap   = document.getElementById('modalIframeWrap');
+  const credEl = document.getElementById('modalCreditsCol');
+  const close  = document.getElementById('modalClose');
 
-  function openModal(src) {
+  function openModal(src, project) {
     wrap.innerHTML = `<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    if (credEl && project) {
+      const lines = Object.entries(project.credits || {})
+        .filter(([, v]) => v)
+        .map(([k, v]) => `<div class="modal-credit-line">
+          <span class="modal-credit-key">${k}</span>
+          <span class="modal-credit-val">${v}</span>
+        </div>`).join('');
+      credEl.innerHTML = `
+        <p class="modal-meta-type">${project.type}</p>
+        <h2 class="modal-meta-title">${project.title}</h2>
+        <p class="modal-meta-year">${project.year}</p>
+        <div class="modal-credits">${lines}</div>`;
+    }
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -171,19 +189,20 @@ function initModal() {
   function closeModal() {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
-    setTimeout(() => { wrap.innerHTML = ''; }, 350);
+    setTimeout(() => { wrap.innerHTML = ''; if (credEl) credEl.innerHTML = ''; }, 350);
   }
 
   document.getElementById('arcGrid').addEventListener('click', e => {
     const link = e.target.closest('.arc-link');
     if (!link) return;
     e.preventDefault();
-    const vid = link.dataset.vimeo;
-    const yt  = link.dataset.youtube;
+    const vid     = link.dataset.vimeo;
+    const yt      = link.dataset.youtube;
+    const project = link.dataset.project ? JSON.parse(decodeURIComponent(link.dataset.project)) : null;
     if (vid) {
-      openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`);
+      openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`, project);
     } else if (yt) {
-      openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`);
+      openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`, project);
     }
   });
 
