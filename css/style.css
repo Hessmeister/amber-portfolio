@@ -81,6 +81,12 @@ nav.scrolled {
   gap: 1.5rem;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .nav-logo {
   font-family: var(--sans);
   font-size: 0.7rem;
