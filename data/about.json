@@ -1,16 +1,31 @@
 {
-  "bio_lead": "Born in The Hague \u2014 the one by the sea that isn\u2019t the capital \u2014 now based in Amsterdam.",
+  "bio_lead": "Born in The Hague — the one by the sea that isn't the capital — now based in Amsterdam.",
+  "bio_lead_nl": "Opgegroeid in Den Haag — de stad aan zee, niet de hoofdstad — nu gevestigd in Amsterdam.",
+
   "bio_body": [
-    "Active in film production since 2002 and a full-time editor since 2007. Her work spans commercials, online films, music videos, short films, dance films, and documentaries \u2014 including work for Amazon Prime.",
+    "Active in film production since 2002 and a full-time editor since 2007. Her work spans commercials, online films, music videos, short films, dance films, and documentaries — including work for Amazon Prime.",
     "Known for a strong sense of rhythm and timing, she brings a musical quality to every edit. Fast, precise, and always searching for the emotional core of the story.",
     "She maintains her own edit suite and a portable setup for location work. A big fan of poolside edit suites."
   ],
+  "bio_body_nl": [
+    "Actief in filmproductie sinds 2002 en fulltime editor sinds 2007. Haar werk omvat commercials, online films, muziekvideo's, korte films, dansfilms en documentaires — waaronder werk voor Amazon Prime.",
+    "Bekend om haar sterke gevoel voor ritme en timing brengt ze een muzikale kwaliteit in elke montage. Snel, precies en altijd op zoek naar de emotionele kern van het verhaal.",
+    "Ze beschikt over een eigen montagekamer en een draagbare opstelling voor locatiewerk. Een groot fan van montagekamers aan het zwembad."
+  ],
+
   "tools": ["Adobe Premiere Pro", "Final Cut Pro", "DaVinci Resolve", "After Effects"],
-  "specialties": ["Commercials", "Music Videos", "Documentaries", "Short Films", "Color Grading"],
+  "specialties": ["Commercials", "Music Videos", "Documentaries", "Short Films", "Online Content", "AI Post Production"],
+
   "contact": {
     "email": "edit@amberhooijmans.nl",
     "phone": "+31 (0)6 4142 9175",
     "phone_href": "+31641429175",
     "location": "Amsterdam, The Netherlands"
+  },
+
+  "social": {
+    "vimeo": "https://vimeo.com/user13929559",
+    "linkedin": "",
+    "instagram": ""
   }
 }

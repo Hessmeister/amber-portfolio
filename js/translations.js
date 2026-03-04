@@ -1,0 +1,55 @@
+/* ============================
+   Amber Hooijmans — i18n
+   Supported: en, nl
+   ============================ */
+
+window.TRANSLATIONS = {
+  en: {
+    nav_work:         'Work',
+    nav_archive:      'Archive',
+    nav_about:        'About',
+    nav_contact:      'Contact',
+    hero_title:       'Video Editor',
+    hero_location:    'Amsterdam, NL',
+    hero_scroll:      'Scroll',
+    available:        'Available for new projects',
+    section_work:     'Selected Work',
+    section_about:    'About',
+    contact_heading:  'Let\u2019s work together',
+    filter_all:       'All',
+    filter_commercial:'Commercial',
+    filter_film:      'Film',
+    filter_music:     'Music Video',
+    filter_doc:       'Documentary',
+    archive_cta:      'Full Archive',
+    reel_label:       'Showreel 2025',
+    contact_email:    'Email',
+    contact_phone:    'Phone',
+    contact_location: 'Location',
+    footer_available: 'Open to new projects',
+  },
+  nl: {
+    nav_work:         'Werk',
+    nav_archive:      'Archief',
+    nav_about:        'Over',
+    nav_contact:      'Contact',
+    hero_title:       'Video Editor',
+    hero_location:    'Amsterdam, NL',
+    hero_scroll:      'Scroll',
+    available:        'Beschikbaar voor nieuwe projecten',
+    section_work:     'Geselecteerd Werk',
+    section_about:    'Over',
+    contact_heading:  'Laten we samenwerken',
+    filter_all:       'Alles',
+    filter_commercial:'Commercials',
+    filter_film:      'Film',
+    filter_music:     'Muziekvideo\u2019s',
+    filter_doc:       'Documentaires',
+    archive_cta:      'Volledig Archief',
+    reel_label:       'Showreel 2025',
+    contact_email:    'E-mail',
+    contact_phone:    'Telefoon',
+    contact_location: 'Locatie',
+    footer_available: 'Beschikbaar voor nieuwe projecten',
+  }
+};

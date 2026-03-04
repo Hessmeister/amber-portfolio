@@ -114,6 +114,30 @@ nav.scrolled {
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { width: 100%; }
 
+/* Language toggle */
+.lang-toggle {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.3rem 0.75rem;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.lang-toggle:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.lang-toggle strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -207,6 +231,39 @@ nav.scrolled {
   color: var(--text-dim);
   opacity: 0;
   animation: fade-up 0.6s var(--ease) 1.7s forwards;
+}
+
+/* Available for new projects badge */
+.hero-available {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  opacity: 0;
+  animation: fade-up 0.6s var(--ease) 2s forwards;
+}
+
+.available-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5a9e6f;
+  flex-shrink: 0;
+  animation: available-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes available-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(90,158,111,0.4); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 5px rgba(90,158,111,0); }
+}
+
+.available-text {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 .hero-scroll {
@@ -970,6 +1027,22 @@ nav.scrolled {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-dim);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.footer-social a {
+  color: var(--text-dim);
+  transition: color 0.2s;
+  display: flex;
+}
+
+.footer-social a:hover {
+  color: var(--text);
 }
 
 .footer-year {

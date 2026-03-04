@@ -3,6 +3,10 @@
    Main JavaScript
    ============================ */
 
+const ICON_VIMEO = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 12.5C4.603 9.913 3.83 8.619 3 8.619c-.179 0-.806.378-1.881 1.132L0 8.364c1.185-1.044 2.351-2.087 3.501-3.128C5.08 3.972 6.266 3.376 7.055 3.305c1.865-.18 3.013 1.092 3.45 3.818.467 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.612-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.475 4.431z"/></svg>`;
+const ICON_LINKEDIN = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
+const ICON_INSTAGRAM = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
+
 const PLAY_ICON_SVG = `
   <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
     <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5"/>
@@ -85,48 +89,63 @@ async function renderProjects() {
   });
 }
 
+/* ---- Render about content (language-aware, re-callable) ---- */
+function renderAboutContent(data) {
+  const lang    = window.LANG || 'en';
+  const aboutEl = document.getElementById('aboutContent');
+  if (!aboutEl) return;
+
+  const lead      = lang === 'nl' && data.bio_lead_nl ? data.bio_lead_nl : data.bio_lead;
+  const bodyArr   = lang === 'nl' && data.bio_body_nl ? data.bio_body_nl : data.bio_body;
+  const bodyParas = bodyArr.map(p => `<p>${p}</p>`).join('');
+  const tools     = data.tools.map(t => `<span class="tool-tag">${t}</span>`).join('');
+
+  aboutEl.innerHTML = `
+    <p class="about-lead">${lead}</p>
+    ${bodyParas}
+    <div class="about-tools">
+      <h3>Tools</h3>
+      <div class="tool-tags">${tools}</div>
+    </div>`;
+}
+
 /* ---- Render about & contact from JSON ---- */
 async function renderAbout() {
-  const aboutEl   = document.getElementById('aboutContent');
   const contactEl = document.getElementById('contactDetails');
-  if (!aboutEl && !contactEl) return;
 
-  const res  = await fetch('data/about.json');
+  const res  = await fetch('data/about.json').catch(() => null);
+  if (!res) return;
   const data = await res.json();
+  ABOUT_DATA = data; // cache for lang switching
 
-  if (aboutEl) {
-    const bodyParas   = data.bio_body.map(p => `<p>${p}</p>`).join('');
-    const tools       = data.tools.map(t => `<span class="tool-tag">${t}</span>`).join('');
-    const specialties = data.specialties.map(s => `<span class="tool-tag">${s}</span>`).join('');
-
-    aboutEl.innerHTML = `
-      <p class="about-lead">${data.bio_lead}</p>
-      ${bodyParas}
-      <div class="about-tools">
-        <h3>Tools</h3>
-        <div class="tool-tags">${tools}</div>
-      </div>
-      <div class="about-specialties">
-        <h3>Specialties</h3>
-        <div class="tool-tags">${specialties}</div>
-      </div>`;
-  }
+  renderAboutContent(data);
 
   if (contactEl) {
     const c = data.contact;
+    const T = window.TRANSLATIONS?.[window.LANG || 'en'] || {};
     contactEl.innerHTML = `
       <div class="contact-item">
-        <span class="contact-label">Email</span>
+        <span class="contact-label">${T.contact_email || 'Email'}</span>
         <a href="mailto:${c.email}" class="contact-value contact-link">${c.email}</a>
       </div>
       <div class="contact-item">
-        <span class="contact-label">Phone</span>
+        <span class="contact-label">${T.contact_phone || 'Phone'}</span>
         <a href="tel:${c.phone_href}" class="contact-value contact-link">${c.phone}</a>
       </div>
       <div class="contact-item">
-        <span class="contact-label">Location</span>
+        <span class="contact-label">${T.contact_location || 'Location'}</span>
         <span class="contact-value">${c.location}</span>
       </div>`;
+  }
+
+  // Render social links in footer
+  const socialEl = document.getElementById('footerSocial');
+  if (socialEl && data.social) {
+    const links = [];
+    if (data.social.vimeo)     links.push(`<a href="${data.social.vimeo}" target="_blank" rel="noopener" aria-label="Vimeo">${ICON_VIMEO}</a>`);
+    if (data.social.linkedin)  links.push(`<a href="${data.social.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICON_LINKEDIN}</a>`);
+    if (data.social.instagram) links.push(`<a href="${data.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${ICON_INSTAGRAM}</a>`);
+    socialEl.innerHTML = links.join('');
   }
 }
 
@@ -335,6 +354,47 @@ function initFilter() {
   });
 }
 
+/* ---- Language toggle (EN / NL) ---- */
+let ABOUT_DATA = null; // cached for re-render on lang switch
+
+function applyLang(lang) {
+  const T = window.TRANSLATIONS?.[lang];
+  if (!T) return;
+  window.LANG = lang;
+  localStorage.setItem('lang', lang);
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Swap all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[key] !== undefined) el.textContent = T[key];
+  });
+
+  // Re-render about section with correct language
+  if (ABOUT_DATA) renderAboutContent(ABOUT_DATA);
+
+  // Update toggle button
+  const btn = document.getElementById('langToggle');
+  if (btn) {
+    btn.innerHTML = lang === 'en'
+      ? '<strong>EN</strong> · NL'
+      : 'EN · <strong>NL</strong>';
+  }
+}
+
+function initLangToggle() {
+  const saved = localStorage.getItem('lang') || 'en';
+  applyLang(saved);
+
+  const btn = document.getElementById('langToggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    applyLang(window.LANG === 'en' ? 'nl' : 'en');
+  });
+}
+
 /* ---- Netlify Identity redirect helper ---- */
 function initNetlifyIdentity() {
   if (window.netlifyIdentity) {
@@ -352,6 +412,7 @@ function initNetlifyIdentity() {
    Boot
    ============================ */
 document.addEventListener('DOMContentLoaded', async () => {
+  initLangToggle();   // sets window.LANG from localStorage before any render
   initHeroAnimation();
   initNav();
   initMobileMenu();

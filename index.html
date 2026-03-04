@@ -3,11 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amber Hooijmans — Video Editor</title>
-  <meta name="description" content="Amber Hooijmans is a video editor and post-production specialist based in Amsterdam. Commercials, documentaries, music videos, and short films.">
+  <title>Amber Hooijmans — Video Editor Amsterdam</title>
+  <meta name="description" content="Freelance video editor based in Amsterdam. Specialist in commercials, short films, music videos and documentaries. 20+ years of experience. Available for new projects — edit@amberhooijmans.nl">
+  <link rel="canonical" href="https://amberhooijmans.nl/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"              content="website">
+  <meta property="og:url"               content="https://amberhooijmans.nl/">
+  <meta property="og:title"             content="Amber Hooijmans — Video Editor Amsterdam">
+  <meta property="og:description"       content="Freelance video editor based in Amsterdam. Commercials, short films, music videos and documentaries. Available for new projects.">
+  <meta property="og:image"             content="https://amberhooijmans.nl/assets/images/thumbnails/peggy.jpg">
+  <meta property="og:locale"            content="en_GB">
+  <meta property="og:locale:alternate"  content="nl_NL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Amber Hooijmans — Video Editor Amsterdam">
+  <meta name="twitter:description" content="Freelance video editor based in Amsterdam. Commercials, short films, music videos and documentaries.">
+  <meta name="twitter:image"       content="https://amberhooijmans.nl/assets/images/thumbnails/peggy.jpg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Amber Hooijmans",
+    "jobTitle": "Video Editor",
+    "description": "Freelance video editor based in Amsterdam with 20+ years of experience in commercials, short films, music videos and documentaries.",
+    "url": "https://amberhooijmans.nl",
+    "email": "edit@amberhooijmans.nl",
+    "telephone": "+31641429175",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Amsterdam",
+      "addressCountry": "NL"
+    },
+    "knowsLanguage": ["nl", "en"],
+    "sameAs": ["https://vimeo.com/user13929559"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,11 +54,12 @@
 <nav id="nav">
   <a href="#" class="nav-logo">Amber Hooijmans</a>
   <div class="nav-links" id="navLinks">
-    <a href="#work">Work</a>
-    <a href="archive.html">Archive</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#work"       data-i18n="nav_work">Work</a>
+    <a href="archive.html" data-i18n="nav_archive">Archive</a>
+    <a href="#about"      data-i18n="nav_about">About</a>
+    <a href="#contact"    data-i18n="nav_contact">Contact</a>
   </div>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN · NL</button>
   <button class="nav-hamburger" id="navToggle" aria-label="Menu">
     <span></span><span></span>
   </button>
@@ -34,13 +73,17 @@
       <span class="hero-line">Hooijmans</span>
     </h1>
     <div class="hero-meta">
-      <span class="hero-title">Video Editor</span>
+      <span class="hero-title" data-i18n="hero_title">Video Editor</span>
       <span class="hero-sep"></span>
-      <span class="hero-location">Amsterdam, NL</span>
+      <span class="hero-location" data-i18n="hero_location">Amsterdam, NL</span>
+    </div>
+    <div class="hero-available">
+      <span class="available-dot"></span>
+      <span class="available-text" data-i18n="available">Available for new projects</span>
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Scroll</span>
+    <span data-i18n="hero_scroll">Scroll</span>
     <div class="hero-scroll-line"></div>
   </div>
 </section>
@@ -70,10 +113,10 @@
 <!-- SHOWREEL -->
 <section id="reel" class="reel reveal">
   <div class="reel-container">
-    <span class="reel-label">Showreel 2025</span>
+    <span class="reel-label" data-i18n="reel_label">Showreel 2025</span>
     <div class="reel-video">
       <div class="reel-placeholder" id="reelPlaceholder">
-        <img class="reel-still" src="assets/images/showreel-still.jpg" alt="Showreel still">
+        <img class="reel-still" src="assets/images/showreel-still.jpg" alt="Amber Hooijmans showreel 2025 — video editor Amsterdam">
         <button class="play-btn" id="reelPlayBtn" data-vimeo="1073861924" aria-label="Play showreel">
           <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
             <path d="M24 14L0 28V0L24 14Z" fill="currentColor"/>
@@ -88,24 +131,22 @@
 <section id="work" class="work">
   <div class="section-header reveal">
     <span class="section-num">01</span>
-    <h2>Selected Work</h2>
+    <h2 data-i18n="section_work">Selected Work</h2>
   </div>
 
-  <!-- Filter bar — counts updated by JS -->
   <div class="filter-bar reveal" id="filterBar">
-    <button class="filter-btn is-active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="commercial">Commercial</button>
-    <button class="filter-btn" data-filter="film">Film</button>
-    <button class="filter-btn" data-filter="music-video">Music Video</button>
-    <button class="filter-btn" data-filter="documentary">Documentary</button>
+    <button class="filter-btn is-active" data-filter="all"        data-i18n="filter_all">All</button>
+    <button class="filter-btn"           data-filter="commercial"  data-i18n="filter_commercial">Commercial</button>
+    <button class="filter-btn"           data-filter="film"        data-i18n="filter_film">Film</button>
+    <button class="filter-btn"           data-filter="music-video" data-i18n="filter_music">Music Video</button>
+    <button class="filter-btn"           data-filter="documentary" data-i18n="filter_doc">Documentary</button>
   </div>
 
-  <!-- Archive grid — populated by JS from data/projects.json -->
   <div class="project-archive" id="projectArchive"></div>
 
   <div class="work-archive-link reveal">
     <a href="archive.html" class="archive-cta">
-      Full Archive
+      <span data-i18n="archive_cta">Full Archive</span>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -117,14 +158,12 @@
 <section id="about" class="about">
   <div class="section-header reveal">
     <span class="section-num">02</span>
-    <h2>About</h2>
+    <h2 data-i18n="section_about">About</h2>
   </div>
-
   <div class="about-container">
     <div class="about-image reveal">
-      <img src="assets/images/amber-photo.jpg" alt="Amber Hooijmans" class="about-photo">
+      <img src="assets/images/amber-photo.jpg" alt="Amber Hooijmans — video editor based in Amsterdam" class="about-photo">
     </div>
-    <!-- Populated by JS from data/about.json -->
     <div class="about-content reveal" id="aboutContent"></div>
   </div>
 </section>
@@ -134,9 +173,8 @@
   <div class="contact-container reveal">
     <div class="contact-header">
       <span class="section-num">03</span>
-      <h2>Let&rsquo;s work<br>together</h2>
+      <h2 data-i18n="contact_heading">Let&rsquo;s work together</h2>
     </div>
-    <!-- Populated by JS from data/about.json -->
     <div class="contact-details" id="contactDetails"></div>
   </div>
 </section>
@@ -145,6 +183,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <span class="footer-name">Amber Hooijmans</span>
+    <div class="footer-social" id="footerSocial"></div>
     <span class="footer-year">&copy; 2026</span>
   </div>
 </footer>
@@ -160,7 +199,8 @@
   </div>
 </div>
 
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+<script src="js/translations.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
