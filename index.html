@@ -6,6 +6,7 @@
   <title>Amber Hooijmans — Video Editor Amsterdam</title>
   <meta name="description" content="Freelance video editor based in Amsterdam. Specialist in commercials, short films, music videos and documentaries. 20+ years of experience. Available for new projects — edit@amberhooijmans.nl">
   <link rel="canonical" href="https://amberhooijmans.nl/">
+  <link rel="alternate" type="text/plain" title="AI-readable summary" href="/llms.txt">
 
   <!-- Open Graph -->
   <meta property="og:type"              content="website">
@@ -26,20 +27,52 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Amber Hooijmans",
-    "jobTitle": "Video Editor",
-    "description": "Freelance video editor based in Amsterdam with 20+ years of experience in commercials, short films, music videos and documentaries.",
-    "url": "https://amberhooijmans.nl",
-    "email": "edit@amberhooijmans.nl",
-    "telephone": "+31641429175",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Amsterdam",
-      "addressCountry": "NL"
-    },
-    "knowsLanguage": ["nl", "en"],
-    "sameAs": ["https://vimeo.com/user13929559"]
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://amberhooijmans.nl/#profilepage",
+        "url": "https://amberhooijmans.nl",
+        "name": "Amber Hooijmans — Video Editor Amsterdam",
+        "description": "Portfolio of Amber Hooijmans, freelance video editor based in Amsterdam specialising in commercials, short films, music videos and documentaries.",
+        "mainEntity": { "@id": "https://amberhooijmans.nl/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://amberhooijmans.nl/#person",
+        "name": "Amber Hooijmans",
+        "givenName": "Amber",
+        "familyName": "Hooijmans",
+        "jobTitle": "Video Editor",
+        "description": "Freelance video editor based in Amsterdam with 20+ years of experience in commercials, short films, music videos, documentaries and online content.",
+        "url": "https://amberhooijmans.nl",
+        "email": "edit@amberhooijmans.nl",
+        "telephone": "+31641429175",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Amsterdam",
+          "addressRegion": "Noord-Holland",
+          "addressCountry": "NL"
+        },
+        "knowsLanguage": ["nl", "en"],
+        "knowsAbout": [
+          "Video Editing", "Film Editing", "Post Production",
+          "Commercials", "Music Videos", "Short Films", "Documentaries",
+          "Online Content", "Dance Films", "AI Post Production",
+          "Adobe Premiere Pro", "Final Cut Pro", "DaVinci Resolve", "After Effects"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Video Editor",
+          "occupationLocation": {
+            "@type": "City",
+            "name": "Amsterdam"
+          },
+          "skills": "Video Editing, Film Editing, Commercials, Music Videos, Short Films, Documentaries, Online Content, AI Post Production"
+        },
+        "availableLanguage": ["Dutch", "English"],
+        "sameAs": ["https://vimeo.com/user13929559"]
+      }
+    ]
   }
   </script>
 
