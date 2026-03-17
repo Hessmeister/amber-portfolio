@@ -45,23 +45,6 @@
       "thumbnail_url": "https://i.vimeocdn.com/video/2133367555-0579175868b3569312d74897ebd0a14bc03c6cec9988f8fdac364f2afbede7d9-d_640?region=us"
     },
     {
-      "title": "Peggy",
-      "category": "documentary",
-      "type": "Short Film",
-      "year": "2024",
-      "vimeo_id": "1073861924",
-      "thumbnail": "assets/images/thumbnails/peggy.jpg",
-      "credits": {
-        "Director": "Andreas Pasvantis",
-        "DOP": "Katja van den Broeke",
-        "Super 8 & Photography": "Andreas Pasvantis",
-        "Music & Sound": "Diederik Idenburg",
-        "Colour Grade": "Black Kite Studios",
-        "Colourist": "Rich Fearon"
-      },
-      "thumbnail_url": "https://i.vimeocdn.com/video/2129056353-d8fe7da5b99e9c0221f3b74467e07200b3d6d085c1688c28a1996c496f5198cd-d_640?region=us"
-    },
-    {
       "title": "KWF",
       "category": "commercial",
       "type": "Commercial",
