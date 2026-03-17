@@ -58,14 +58,13 @@ function renderProjectCard(project) {
     title: project.title, type: project.type, year: project.year, credits: project.credits
   }));
 
-  // Always prefer the Vimeo-selected thumbnail over uploaded screenshots
-  const thumbSrc       = vimeoId ? '' : (project.thumbnail || '');
-  const vimeoThumbAttr = vimeoId ? ` data-vimeo-thumb="${vimeoId}"` : '';
+  // Use pre-fetched Vimeo thumbnail (set at build time), fall back to uploaded file
+  const thumbSrc = project.thumbnail_url || project.thumbnail || '';
 
   el.innerHTML = `
     <a href="#" class="project-link"${vimeoAttr}${youtubeAttr} data-project="${projectData}">
       <div class="project-thumb">
-        <img class="thumb-img" src="${thumbSrc}" alt="${project.title}" loading="lazy"${vimeoThumbAttr}>
+        <img class="thumb-img" src="${thumbSrc}" alt="${project.title}" loading="lazy">
         <div class="project-overlay">${hasVideo ? PLAY_ICON_SVG : ''}</div>
       </div>
       <div class="project-meta">

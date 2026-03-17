@@ -1,6 +1,32 @@
 {
   "projects": [
     {
+      "title": "Kruidvat",
+      "category": "commercial",
+      "year": "2025",
+      "vimeo_id": "1173222103",
+      "thumbnail_url": "https://i.vimeocdn.com/video/2133367555-0579175868b3569312d74897ebd0a14bc03c6cec9988f8fdac364f2afbede7d9-d_640?region=us",
+      "credits": {
+        "Director": "Juliette Stevens",
+        "Production": "Wefilm",
+        "DOP": "Lennart Verstegen",
+        "Agency": "DDB Amsterdam",
+        "Colour Grade": "de Grot",
+        "Music": "Jorrit Kleijnen en Jacob Meijer"
+      }
+    },
+    {
+      "title": "Rabobank",
+      "category": "commercial",
+      "year": "2025",
+      "vimeo_id": "1174414692",
+      "credits": {
+        "Director": "No Maybe Yes aka Max Pauwels",
+        "Production": "Cake Film & Photo",
+        "Agency": "Dentsu Creative"
+      }
+    },
+    {
       "title": "DGTL CTRL // BREAK",
       "category": "commercial",
       "year": "2026",
@@ -8,7 +34,8 @@
       "credits": {
         "Director": "Aaron van Valen",
         "DOP": "Zeger Verschuren"
-      }
+      },
+      "thumbnail_url": "https://i.vimeocdn.com/video/2135017422-1fd51b55ef3454c4fcd22db109811b7d8bef7d991ab121e88ebab30122e945e7-d_640?region=us"
     },
     {
       "title": "Peggy",
