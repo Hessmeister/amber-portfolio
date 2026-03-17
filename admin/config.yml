@@ -132,6 +132,8 @@ collections:
         label: About & Contact
         file: data/about.json
         fields:
+          - { label: "Showreel Vimeo ID", name: showreel_vimeo_id, widget: string,
+              hint: "Numbers only — e.g. 1073861924. Changing this updates the video on the homepage." }
           - { label: "Lead Paragraph", name: bio_lead, widget: text }
           - label: "Bio Paragraphs"
             name: bio_body

@@ -136,6 +136,18 @@ async function renderAbout() {
 
   renderAboutContent(data);
 
+  // Wire up showreel vimeo ID from about.json
+  if (data.showreel_vimeo_id) {
+    const btn  = document.getElementById('reelPlayBtn');
+    const still = document.getElementById('reelStill');
+    if (btn) btn.dataset.vimeo = data.showreel_vimeo_id;
+    if (still && still.src.includes('showreel-still.jpg')) {
+      fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${data.showreel_vimeo_id}&width=1280`)
+        .then(r => r.json()).then(d => { if (d.thumbnail_url) still.src = d.thumbnail_url; })
+        .catch(() => {});
+    }
+  }
+
   if (contactEl) {
     const c = data.contact;
     const T = window.TRANSLATIONS?.[window.LANG || 'en'] || {};
