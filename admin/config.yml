@@ -35,8 +35,10 @@ collections:
               - label: Thumbnail
                 name: thumbnail
                 widget: image
+                required: false
                 media_folder: /assets/images/thumbnails
                 public_folder: assets/images/thumbnails
+                hint: "Leave blank to auto-fetch from Vimeo"
               - { label: "Vimeo ID",   name: vimeo_id,   widget: string, required: false,
                   hint: "Numbers only — e.g. 1073861924" }
               - { label: "YouTube ID", name: youtube_id, widget: string, required: false,
