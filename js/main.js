@@ -32,9 +32,16 @@ function buildCreditLines(credits) {
   return { primary, seoText };
 }
 
+/* ---- Normalise a Vimeo value to just the numeric ID ---- */
+function normaliseVimeoId(raw) {
+  if (!raw) return null;
+  const match = String(raw).match(/(\d{6,})/);
+  return match ? match[1] : String(raw);
+}
+
 /* ---- Render a single project card ---- */
 function renderProjectCard(project) {
-  const vimeoId   = project.vimeo_id   || null;
+  const vimeoId   = normaliseVimeoId(project.vimeo_id);
   const youtubeId = project.youtube_id || null;
   const hasVideo  = vimeoId || youtubeId;
 
@@ -51,10 +58,14 @@ function renderProjectCard(project) {
     title: project.title, type: project.type, year: project.year, credits: project.credits
   }));
 
+  // Always prefer the Vimeo-selected thumbnail over uploaded screenshots
+  const thumbSrc       = vimeoId ? '' : (project.thumbnail || '');
+  const vimeoThumbAttr = vimeoId ? ` data-vimeo-thumb="${vimeoId}"` : '';
+
   el.innerHTML = `
     <a href="#" class="project-link"${vimeoAttr}${youtubeAttr} data-project="${projectData}">
       <div class="project-thumb">
-        <img class="thumb-img" src="${project.thumbnail || ''}" alt="${project.title}" loading="lazy"${!project.thumbnail && project.vimeo_id ? ` data-vimeo-thumb="${project.vimeo_id}"` : ''}>
+        <img class="thumb-img" src="${thumbSrc}" alt="${project.title}" loading="lazy"${vimeoThumbAttr}>
         <div class="project-overlay">${hasVideo ? PLAY_ICON_SVG : ''}</div>
       </div>
       <div class="project-meta">
@@ -78,11 +89,11 @@ async function renderProjects() {
   const res = await fetch('data/projects.json');
   const { projects } = await res.json();
 
-  // Grid depths (px of travel): matches column spans [6,5,5,6,5,7,6,5,7]
+  // Grid depths (px of travel): matches column spans, repeats every 9
   const DEPTHS = [65, 40, 40, 65, 40, 95, 65, 40, 95];
   projects.forEach((project, i) => {
     const card = renderProjectCard(project);
-    card.dataset.depth = DEPTHS[i] ?? 55;
+    card.dataset.depth = DEPTHS[i % DEPTHS.length];
     archive.appendChild(card);
   });
 
