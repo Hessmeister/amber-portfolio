@@ -29,6 +29,7 @@ collections:
                   - { label: Film,        value: film }
                   - { label: Music Video, value: music-video }
                   - { label: Documentary, value: documentary }
+                  - { label: Fashion,     value: fashion }
               - { label: "Type Label", name: type, widget: string,
                   hint: "Label shown on card — e.g. 'Short Film', 'Fashion Film', 'Commercial'" }
               - { label: Year, name: year, widget: string }
@@ -90,6 +91,7 @@ collections:
                   - { label: Film,        value: film }
                   - { label: Music Video, value: music-video }
                   - { label: Documentary, value: documentary }
+                  - { label: Fashion,     value: fashion }
               - { label: Year, name: year, widget: string }
               - { label: "Vimeo ID",   name: vimeo_id,   widget: string, required: false,
                   hint: "Numbers only — e.g. 1073861924" }
