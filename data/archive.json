@@ -163,20 +163,6 @@
       "thumbnail_url": "https://i.vimeocdn.com/video/2005739742-e8939e51c6e067e558c2ce912bab23cc7e9f52837fa1b1e4f5f29e55b4379a9d-d_640"
     },
     {
-      "title": "Sticks & Stones",
-      "category": "film",
-      "year": "2025",
-      "vimeo_id": "1073864461",
-      "credits": {
-        "Director": "Insane",
-        "DOP": "Ezra Reverda",
-        "Choreography": "The Movers",
-        "Music": "Sjoerd Limberger ft. HALCYON",
-        "Post": "The Compound"
-      },
-      "thumbnail_url": ""
-    },
-    {
       "title": "Zilveren Kruis",
       "category": "commercial",
       "year": "2025",
@@ -255,6 +241,20 @@
         "DOP": "Martijn Melis",
         "Producer": "Lino Kempees",
         "Grade & VFX": "Laurens Orij at Crabsalad"
+      },
+      "thumbnail_url": ""
+    },
+    {
+      "title": "Sticks & Stones",
+      "category": "film",
+      "year": "2024",
+      "vimeo_id": "1073864461",
+      "credits": {
+        "Director": "Insane",
+        "DOP": "Ezra Reverda",
+        "Choreography": "The Movers",
+        "Music": "Sjoerd Limberger ft. HALCYON",
+        "Post": "The Compound"
       },
       "thumbnail_url": ""
     },
