@@ -144,6 +144,18 @@
         "Music & Sound": "Massive Music",
         "Post Production": "The Ambassadors"
       }
+    },
+    {
+      "title": "DGTL CTRL // BREAK",
+      "category": "commercial",
+      "year": "2026",
+      "vimeo_id": "https://vimeo.com/1170309766",
+      "credits": {
+        "Director": "Aaron van Valen",
+        "DOP": "Zeger Verschuren"
+      },
+      "type": "Commercial",
+      "thumbnail": "https://vimeo.com/1170309766"
     }
   ]
 }
