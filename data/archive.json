@@ -53,19 +53,6 @@
       }
     },
     {
-      "title": "Peggy",
-      "category": "film",
-      "year": "2025",
-      "vimeo_id": "1073861924",
-      "credits": {
-        "Director": "Andreas Pasvantis",
-        "DOP": "Katja van den Broeke",
-        "Grade": "Black Kite Studios",
-        "Colourist": "Rich Fearon"
-      },
-      "thumbnail_url": ""
-    },
-    {
       "title": "Vel Pitar",
       "category": "commercial",
       "year": "2025",
@@ -208,6 +195,19 @@
         "Agency": "Natwerk",
         "DOP": "Daan Bukman",
         "Post": "Storm"
+      },
+      "thumbnail_url": ""
+    },
+    {
+      "title": "Peggy",
+      "category": "film",
+      "year": "2024",
+      "vimeo_id": "1073861924",
+      "credits": {
+        "Director": "Andreas Pasvantis",
+        "DOP": "Katja van den Broeke",
+        "Grade": "Black Kite Studios",
+        "Colourist": "Rich Fearon"
       },
       "thumbnail_url": ""
     },
