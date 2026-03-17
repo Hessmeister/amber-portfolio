@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "title": "DGTL CTRL // BREAK",
+      "category": "commercial",
+      "year": "2026",
+      "vimeo_id": "1170309766",
+      "credits": {
+        "Director": "Aaron van Valen",
+        "DOP": "Zeger Verschuren"
+      }
+    },
+    {
       "title": "Peggy",
       "category": "film",
       "year": "2025",

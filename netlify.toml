@@ -1,0 +1,3 @@
+[build]
+  command = "node scripts/sync-to-archive.js"
+  publish = "."
