@@ -1,6 +1,19 @@
 {
   "projects": [
     {
+      "title": "Ikea",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2025",
+      "vimeo_id": "https://vimeo.com/1170310615",
+      "thumbnail": "https://vimeo.com/1170310615",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "Movie Magic International",
+        "DOP": "Myrthe Mosterman"
+      }
+    },
+    {
       "title": "Kruidvat",
       "category": "commercial",
       "type": "Commercial",
@@ -161,19 +174,6 @@
         "Grade": "Ruben Labree"
       },
       "thumbnail_url": "https://i.vimeocdn.com/video/2129047428-e4a60b9ad062d613af6e36e32c5dfbc49c9dba116259139d619ae299bf33832f-d_640?region=us"
-    },
-    {
-      "title": "Ikea",
-      "category": "commercial",
-      "type": "Commercial",
-      "year": "2025",
-      "vimeo_id": "https://vimeo.com/1170310615",
-      "thumbnail": "https://vimeo.com/1170310615",
-      "credits": {
-        "Director": "Jacobine van Hellemond",
-        "Production": "Movie Magic International",
-        "DOP": "Myrthe Mosterman"
-      }
     }
   ]
 }
