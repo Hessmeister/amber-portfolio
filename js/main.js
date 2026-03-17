@@ -69,7 +69,6 @@ function renderProjectCard(project) {
       </div>
       <div class="project-meta">
         <div class="project-header-row">
-          <span class="project-type">${project.type}</span>
           <span class="project-year">${project.year}</span>
         </div>
         <h3 class="project-name">${project.title}</h3>
