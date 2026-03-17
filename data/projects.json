@@ -78,22 +78,6 @@
       "thumbnail": "assets/images/thumbnails/screenshot-2026-03-17-at-16.09.03.png"
     },
     {
-      "title": "KPN",
-      "category": "commercial",
-      "type": "Commercial",
-      "year": "2023",
-      "vimeo_id": "817205311",
-      "thumbnail": "assets/images/thumbnails/kpn.jpg",
-      "credits": {
-        "Director": "Jacobine van Hellemond",
-        "Production": "hazazaH",
-        "Agency": "dentsuACHTUNG!",
-        "DOP": "Douwe Hennink",
-        "Grade": "Joppo @ De Grot"
-      },
-      "thumbnail_url": "https://i.vimeocdn.com/video/2129059235-2768326689df68593bda0f3bf157eae3d724d2d7b3c5585aa9a0eece0b5554ee-d_640?region=us"
-    },
-    {
       "title": "Lapierre",
       "category": "commercial",
       "type": "Commercial",
@@ -111,6 +95,22 @@
         "Music": "Rimer London"
       },
       "thumbnail_url": "https://i.vimeocdn.com/video/2129051571-3beadb4cb4f7261b15b1b0988054102640768cc4505747d344b57089f8b0cedd-d_640?region=us"
+    },
+    {
+      "title": "KPN",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2023",
+      "vimeo_id": "817205311",
+      "thumbnail": "assets/images/thumbnails/kpn.jpg",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "hazazaH",
+        "Agency": "dentsuACHTUNG!",
+        "DOP": "Douwe Hennink",
+        "Grade": "Joppo @ De Grot"
+      },
+      "thumbnail_url": "https://i.vimeocdn.com/video/2129059235-2768326689df68593bda0f3bf157eae3d724d2d7b3c5585aa9a0eece0b5554ee-d_640?region=us"
     },
     {
       "title": "Scoon",
