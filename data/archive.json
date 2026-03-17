@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "title": "DGTL CTRL // BREAK",
+      "category": "commercial",
+      "year": "2026",
+      "vimeo_id": "1170309766",
+      "credits": {
+        "Director": "Aaron van Valen",
+        "DOP": "Zeger Verschuren"
+      },
+      "thumbnail_url": "https://i.vimeocdn.com/video/2135017422-1fd51b55ef3454c4fcd22db109811b7d8bef7d991ab121e88ebab30122e945e7-d_640?region=us"
+    },
+    {
       "title": "Marktplaats",
       "category": "commercial",
       "year": "2025",
@@ -42,17 +53,6 @@
       }
     },
     {
-      "title": "DGTL CTRL // BREAK",
-      "category": "commercial",
-      "year": "2026",
-      "vimeo_id": "1170309766",
-      "credits": {
-        "Director": "Aaron van Valen",
-        "DOP": "Zeger Verschuren"
-      },
-      "thumbnail_url": "https://i.vimeocdn.com/video/2135017422-1fd51b55ef3454c4fcd22db109811b7d8bef7d991ab121e88ebab30122e945e7-d_640?region=us"
-    },
-    {
       "title": "Peggy",
       "category": "film",
       "year": "2025",
@@ -64,6 +64,16 @@
         "Colourist": "Rich Fearon"
       },
       "thumbnail_url": ""
+    },
+    {
+      "title": "Vel Pitar",
+      "category": "commercial",
+      "year": "2025",
+      "vimeo_id": "1170311548",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "2029 Film Farm Productions"
+      }
     },
     {
       "title": "DGTL The Dome",
