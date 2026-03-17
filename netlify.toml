@@ -1,3 +1,14 @@
 [build]
   command = "node scripts/sync-to-archive.js"
   publish = "."
+
+# Disable CDN caching for JS/CSS so deploys take effect immediately
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
