@@ -120,7 +120,7 @@ function renderAboutContent(data) {
     <p class="about-lead">${lead}</p>
     ${bodyParas}
     <div class="about-tools">
-      <h3>Tools</h3>
+      <h3>Editing Software</h3>
       <div class="tool-tags">${tools}</div>
     </div>`;
 }

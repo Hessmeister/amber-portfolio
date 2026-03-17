@@ -140,7 +140,7 @@ collections:
             name: bio_body
             widget: list
             field: { label: Paragraph, name: paragraph, widget: text }
-          - label: Tools
+          - label: Editing Software
             name: tools
             widget: list
             field: { label: Tool, name: tool, widget: string }
