@@ -1252,6 +1252,19 @@
         "Grade": "de Grot",
         "Agency": "Ogilvy Italy"
       }
+    },
+    {
+      "title": "Ikea",
+      "category": "commercial",
+      "year": "2025",
+      "vimeo_id": "1170310615",
+      "credits": {
+        "Director": "Jacobine van Hellemond",
+        "Production": "Movie Magic International",
+        "Agency": "Ogilvy Italy",
+        "DOP": "Myrthe Mosterman",
+        "Grade": "de Grot"
+      }
     }
   ]
 }
