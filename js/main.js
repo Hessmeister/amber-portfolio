@@ -54,7 +54,7 @@ function renderProjectCard(project) {
   el.innerHTML = `
     <a href="#" class="project-link"${vimeoAttr}${youtubeAttr} data-project="${projectData}">
       <div class="project-thumb">
-        <img class="thumb-img" src="${project.thumbnail}" alt="${project.title}" loading="lazy">
+        <img class="thumb-img" src="${project.thumbnail || ''}" alt="${project.title}" loading="lazy"${!project.thumbnail && project.vimeo_id ? ` data-vimeo-thumb="${project.vimeo_id}"` : ''}>
         <div class="project-overlay">${hasVideo ? PLAY_ICON_SVG : ''}</div>
       </div>
       <div class="project-meta">
@@ -426,6 +426,18 @@ function initNetlifyIdentity() {
 /* ============================
    Boot
    ============================ */
+async function resolveVimeoThumbs() {
+  const imgs = document.querySelectorAll('img[data-vimeo-thumb]');
+  await Promise.all([...imgs].map(async img => {
+    const id = img.dataset.vimeoThumb;
+    try {
+      const res  = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`);
+      const data = await res.json();
+      if (data.thumbnail_url) img.src = data.thumbnail_url;
+    } catch (e) { /* leave blank on failure */ }
+  }));
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   initLangToggle();   // sets window.LANG from localStorage before any render
   initHeroAnimation();
@@ -440,4 +452,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   initFilter();
   initModal();
   initParallax();
+  resolveVimeoThumbs();
 });

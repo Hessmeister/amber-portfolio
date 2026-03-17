@@ -32,6 +32,7 @@ function renderCard(project) {
   const youtubeAttr= project.youtube_id? ` data-youtube="${project.youtube_id}"`: '';
   const hasVideo   = project.vimeo_id || project.youtube_id;
   const thumb      = project.thumbnail_url || '';
+  const needsThumb = !thumb && project.vimeo_id;
 
   const card = document.createElement('article');
   card.className  = 'arc-card';
@@ -47,7 +48,7 @@ function renderCard(project) {
   card.innerHTML = `
     <a class="arc-link" href="#"${vimeoAttr}${youtubeAttr} data-project="${projectData}">
       <div class="arc-thumb">
-        <img src="${thumb}" alt="${project.title}" loading="lazy" width="640" height="360">
+        <img src="${thumb}" alt="${project.title}" loading="lazy" width="640" height="360"${needsThumb ? ` data-vimeo-thumb="${project.vimeo_id}"` : ''}>
         ${hasVideo ? `<div class="arc-overlay">${PLAY_SVG}</div>` : ''}
       </div>
       <div class="arc-meta">
@@ -252,6 +253,19 @@ function initHeroAnimation() {
   });
 }
 
+/* ---- Auto-fetch missing Vimeo thumbnails ---- */
+async function resolveVimeoThumbs(container) {
+  const imgs = (container || document).querySelectorAll('img[data-vimeo-thumb]');
+  await Promise.all([...imgs].map(async img => {
+    const id = img.dataset.vimeoThumb;
+    try {
+      const res  = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`);
+      const data = await res.json();
+      if (data.thumbnail_url) img.src = data.thumbnail_url;
+    } catch (e) { /* leave blank on failure */ }
+  }));
+}
+
 /* ---- Boot ---- */
 document.addEventListener('DOMContentLoaded', async () => {
   initHeroAnimation();
@@ -264,4 +278,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderGrid(projects);
   initFilters(projects);
   initModal();
+  resolveVimeoThumbs();
 });
