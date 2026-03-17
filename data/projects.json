@@ -1,6 +1,22 @@
 {
   "projects": [
     {
+      "title": "Kruidvat",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2025",
+      "thumbnail": "assets/images/thumbnails/screenshot-2026-03-17-at-16.08.10.png",
+      "vimeo_id": "https://vimeo.com/1173222103",
+      "credits": {
+        "Director": "Juliette Stevens",
+        "Production": "Wefilm",
+        "DOP": "Lennart Verstegen",
+        "Agency": "DDB Amsterdam",
+        "Colour Grade": "de Grot",
+        "Music": "Jorrit Kleijnen en Jacob Meijer"
+      }
+    },
+    {
       "title": "DGTL CTRL // BREAK",
       "category": "commercial",
       "year": "2026",
