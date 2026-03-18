@@ -920,8 +920,8 @@ nav.scrolled {
 
 .modal-iframe-wrap {
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background: #000;
 }
 
