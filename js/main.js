@@ -212,8 +212,6 @@ function initModal() {
     setTimeout(() => { wrap.innerHTML = ''; }, 350);
   }
 
-  const isMobile = () => window.matchMedia('(pointer: coarse)').matches;
-
   // Project card clicks
   document.getElementById('projectArchive').addEventListener('click', e => {
     const link = e.target.closest('.project-link');
@@ -223,11 +221,9 @@ function initModal() {
     const yt      = link.dataset.youtube;
     const project = link.dataset.project ? JSON.parse(decodeURIComponent(link.dataset.project)) : null;
     if (vid) {
-      if (isMobile()) { window.open(`https://vimeo.com/${vid}`, '_blank'); return; }
-      openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`, project);
+      openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&color=ffffff`, project);
     } else if (yt) {
-      if (isMobile()) { window.open(`https://www.youtube.com/watch?v=${yt}`, '_blank'); return; }
-      openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`, project);
+      openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&playsinline=1&rel=0`, project);
     }
   });
 
@@ -238,11 +234,9 @@ function initModal() {
       const vid = reelBtn.dataset.vimeo;
       const yt  = reelBtn.dataset.youtube;
       if (vid) {
-        if (isMobile()) { window.open(`https://vimeo.com/${vid}`, '_blank'); return; }
-        openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`);
+        openModal(`https://player.vimeo.com/video/${vid}?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&color=ffffff`);
       } else if (yt) {
-        if (isMobile()) { window.open(`https://www.youtube.com/watch?v=${yt}`, '_blank'); return; }
-        openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`);
+        openModal(`https://www.youtube.com/embed/${yt}?autoplay=1&playsinline=1&rel=0`);
       }
     });
   }
