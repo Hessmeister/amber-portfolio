@@ -118,7 +118,6 @@ function applyFilters() {
 
   empty.style.display = visible === 0 ? '' : 'none';
   // Update subtitle
-  const cards = document.querySelectorAll('.arc-card');
   const total = cards.length;
   const sub = document.getElementById('arcSubtitle');
   if (sub) {
