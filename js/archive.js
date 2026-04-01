@@ -118,11 +118,18 @@ function applyFilters() {
 
   empty.style.display = visible === 0 ? '' : 'none';
   // Update subtitle
-  const total = document.querySelectorAll('.arc-card').length;
+  const cards = document.querySelectorAll('.arc-card');
+  const total = cards.length;
   const sub = document.getElementById('arcSubtitle');
-  if (sub) sub.textContent = visible === total
-    ? `${total} projects · 2012–2025`
-    : `${visible} of ${total} projects`;
+  if (sub) {
+    if (visible === total) {
+      const years = [...cards].map(c => parseInt(c.dataset.year)).filter(Boolean);
+      const minY = Math.min(...years), maxY = Math.max(...years);
+      sub.textContent = `${total} projects · ${minY}–${maxY}`;
+    } else {
+      sub.textContent = `${visible} of ${total} projects`;
+    }
+  }
 }
 
 function initFilters(projects) {
