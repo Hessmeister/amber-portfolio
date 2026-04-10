@@ -17,6 +17,23 @@
       "thumbnail_url": "https://i.vimeocdn.com/video/2135017422-1fd51b55ef3454c4fcd22db109811b7d8bef7d991ab121e88ebab30122e945e7-d_640?region=us"
     },
     {
+      "title": "Scotch & Soda",
+      "category": "fashion",
+      "type": "Fashion Film",
+      "year": "2017",
+      "vimeo_id": "238951610",
+      "thumbnail": "assets/images/thumbnails/scotch-soda.jpg",
+      "credits": {
+        "Director": "Fleur Fortuné",
+        "Agency": "133/Publicis Paris",
+        "Creative Director": "Paulo Martins",
+        "Producer": "Erika Vocking",
+        "Music & Sound": "Massive Music",
+        "Post Production": "The Ambassadors"
+      },
+      "thumbnail_url": "https://i.vimeocdn.com/video/2129060437-61a290458ebd9c8954eaa8df1ec4e58eda5b175a456154235de382dc2ab5d6c2-d_640?region=us"
+    },
+    {
       "title": "Ikea",
       "category": "commercial",
       "type": "Commercial",
@@ -29,6 +46,25 @@
         "DOP": "Myrthe Mosterman",
         "Agency": "Ogilvy Italy"
       }
+    },
+    {
+      "title": "Lapierre",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2022",
+      "vimeo_id": "667685324",
+      "thumbnail": "assets/images/thumbnails/lapierre.jpg",
+      "credits": {
+        "Director": "Ruben Van Leer",
+        "Production": "Artillerie",
+        "DOP": "Ezra Reverda",
+        "Producer": "Philippe Avendaño Vera",
+        "VFX": "Becanti Wijnbergh",
+        "Grade": "Wietse van Bezooijen",
+        "Online & Finishing": "The Compound",
+        "Music": "Rimer London"
+      },
+      "thumbnail_url": "https://i.vimeocdn.com/video/2129051571-3beadb4cb4f7261b15b1b0988054102640768cc4505747d344b57089f8b0cedd-d_640?region=us"
     },
     {
       "title": "Kruidvat",
@@ -78,25 +114,6 @@
       "thumbnail": "assets/images/thumbnails/screenshot-2026-03-17-at-16.09.03.png"
     },
     {
-      "title": "Lapierre",
-      "category": "commercial",
-      "type": "Commercial",
-      "year": "2022",
-      "vimeo_id": "667685324",
-      "thumbnail": "assets/images/thumbnails/lapierre.jpg",
-      "credits": {
-        "Director": "Ruben Van Leer",
-        "Production": "Artillerie",
-        "DOP": "Ezra Reverda",
-        "Producer": "Philippe Avendaño Vera",
-        "VFX": "Becanti Wijnbergh",
-        "Grade": "Wietse van Bezooijen",
-        "Online & Finishing": "The Compound",
-        "Music": "Rimer London"
-      },
-      "thumbnail_url": "https://i.vimeocdn.com/video/2129051571-3beadb4cb4f7261b15b1b0988054102640768cc4505747d344b57089f8b0cedd-d_640?region=us"
-    },
-    {
       "title": "KPN",
       "category": "commercial",
       "type": "Commercial",
@@ -127,23 +144,6 @@
         "Sound": "Most"
       },
       "thumbnail_url": "https://i.vimeocdn.com/video/2129052604-d2fd2ae2e483f09112baea57ee45703dbd7842cd967146c01440cb10873a2021-d_640?region=us"
-    },
-    {
-      "title": "Scotch & Soda",
-      "category": "fashion",
-      "type": "Fashion Film",
-      "year": "2017",
-      "vimeo_id": "238951610",
-      "thumbnail": "assets/images/thumbnails/scotch-soda.jpg",
-      "credits": {
-        "Director": "Fleur Fortuné",
-        "Agency": "133/Publicis Paris",
-        "Creative Director": "Paulo Martins",
-        "Producer": "Erika Vocking",
-        "Music & Sound": "Massive Music",
-        "Post Production": "The Ambassadors"
-      },
-      "thumbnail_url": "https://i.vimeocdn.com/video/2129060437-61a290458ebd9c8954eaa8df1ec4e58eda5b175a456154235de382dc2ab5d6c2-d_640?region=us"
     },
     {
       "title": "The Bird — Sing Me A Song",
