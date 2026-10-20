@@ -136,6 +136,22 @@ async function renderAbout() {
 
   renderAboutContent(data);
 
+  // Show / hide availability badge
+  const badge = document.querySelector('.hero-available');
+  const badgeText = document.querySelector('.available-text');
+  if (badge) {
+    const status = data.availability_status?.trim();
+    if (status) {
+      badge.style.display = '';
+      if (badgeText) {
+        badgeText.textContent = status;
+        badgeText.removeAttribute('data-i18n'); // prevent lang toggle from overwriting custom text
+      }
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
   // Wire up showreel vimeo ID from about.json
   if (data.showreel_vimeo_id) {
     const btn  = document.getElementById('reelPlayBtn');

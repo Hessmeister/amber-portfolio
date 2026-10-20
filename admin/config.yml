@@ -133,6 +133,9 @@ collections:
         label: About & Contact
         file: data/about.json
         fields:
+          - { label: "Availability status", name: availability_status, widget: string,
+              required: false,
+              hint: "Shown as a badge in the header. Leave blank to hide it. e.g. 'Available from mid February' or 'Currently on a project'." }
           - { label: "Showreel Vimeo ID", name: showreel_vimeo_id, widget: string,
               hint: "Numbers only — e.g. 1073861924. Changing this updates the video on the homepage." }
           - { label: "Lead Paragraph", name: bio_lead, widget: text }
