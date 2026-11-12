@@ -1,6 +1,21 @@
 {
   "projects": [
     {
+      "title": "Google Pixel",
+      "category": "commercial",
+      "type": "Commercial",
+      "year": "2026",
+      "vimeo_id": "https://vimeo.com/1246212201",
+      "credits": {
+        "Director": "Milan van Dril",
+        "Production": "Artillerie",
+        "Agency": "AKQA",
+        "DOP": "Bart Hoveijn",
+        "Grade": "Het Kleurlokaal",
+        "Music": "KI/KI"
+      }
+    },
+    {
       "title": "DGTL CTRL // BREAK",
       "category": "commercial",
       "year": "2026",
@@ -161,21 +176,6 @@
         "Grade": "Ruben Labree"
       },
       "thumbnail_url": "https://i.vimeocdn.com/video/2129047428-e4a60b9ad062d613af6e36e32c5dfbc49c9dba116259139d619ae299bf33832f-d_640?region=us"
-    },
-    {
-      "title": "Google Pixel",
-      "category": "commercial",
-      "type": "Commercial",
-      "year": "2026",
-      "vimeo_id": "https://vimeo.com/1246212201",
-      "credits": {
-        "Director": "Milan van Dril",
-        "Production": "Artillerie",
-        "Agency": "AKQA",
-        "DOP": "Bart Hoveijn",
-        "Grade": "Het Kleurlokaal",
-        "Music": "KI/KI"
-      }
     }
   ]
 }
